@@ -9,9 +9,9 @@ import casperfpga
 class FirmwareSnaps(object):
     
     	def __init__(self):
-		self.fpga = casperfpga.katcp_fpga.KatcpFpga("192.168.40.52",timeout=120.)
+		self.fpga = casperfpga.katcp_fpga.KatcpFpga("192.168.40.89",timeout=120.)
 		self.dds_shift = 305
-		self.accum_len = 2**19 
+		self.accum_len = 2**21 
 		self.fft_len = 1024
 	
     	def menu(self,prompt,options):
@@ -38,16 +38,16 @@ class FirmwareSnaps(object):
 		line1, = plot1.plot(np.arange(0,2048), np.zeros(2048), 'r-', linewidth = 2)
 		plot1.set_title('I', size = 20)
 		plt.xlim(0,1024)
-		plt.ylim(-1.4,1.4)
-		plt.yticks(np.arange(-1.4, 1.4, 0.1))
+		plt.ylim(-1.1,1.1)
+		plt.yticks(np.arange(-1.1, 1.1, 0.05))
 		#plt.ylim(-2**12 - 1,2**12 -1)
 		plt.grid()
 		plot2 = fig.add_subplot(212)
 		line2, = plot2.plot(np.arange(0,2048), np.zeros(2048), 'b-', linewidth = 2)
 		plot2.set_title('Q', size = 20)
 		plt.xlim(0,1024)
-		plt.ylim(-1.4,1.4)
-		plt.yticks(np.arange(-1.4, 1.4, 0.1))
+		plt.ylim(-1.1,1.1)
+		plt.yticks(np.arange(-1.1, 1.1, 0.05))
 		#plt.ylim(-2**12-1,2**12-1)
 		plt.grid()
 		plt.tight_layout()
@@ -62,8 +62,8 @@ class FirmwareSnaps(object):
 			self.fpga.write_int('adc_snap_trig',1)    
 			self.fpga.write_int('adc_snap_trig',0)
 			adc = (np.fromstring(self.fpga.read('adc_snap_bram',(2**10)*8),dtype='>i2')).astype('float')
-			adc /= (2**15 -1)
-			adc *= 1.2
+			adc /= (2**16 - 1)
+			adc *= 1.1
 			# ADC full scale is 2.2 V
 			I = np.hstack(zip(adc[0::4],adc[1::4]))
 			Q = np.hstack(zip(adc[2::4],adc[3::4]))
@@ -82,17 +82,17 @@ class FirmwareSnaps(object):
 		# Reads the avgIQ buffer. Returns I and Q as 32-b signed integers     
 		self.fpga.write_int('accum_snap_ctrl', 0)
 		self.fpga.write_int('accum_snap_ctrl', 1)
-		accum_data = np.fromstring(self.fpga.read('accum_snap_bram', 16*2**11), dtype = '>i').astype('float')
+		accum_data = np.fromstring(self.fpga.read('accum_snap_bram', 16*2**9), dtype = '>i').astype('float')
 		I = accum_data[0::2]    
 		Q = accum_data[1::2]    
 		return I, Q    
 
 	def plotAccum(self):
 		# Generates a plot stream from read_avgIQ_snap(). To view, run plotAvgIQ.py in a separate terminal
-		freqlen = 22
+		freqlen =600
 		fig = plt.figure(num= None, figsize=(20,12))
 		#plt.suptitle('Averaged FFT, Accum. Frequency = ' + str(self.accum_freq), fontsize=20)
-		plot1 = fig.add_subplot(221)
+		plot1 = fig.add_subplot(111)
 		line1, = plot1.plot(np.arange(0,freqlen),np.zeros(freqlen), '#FF4500')
 		line1.set_linestyle('None')
 		line1.set_marker('.')
@@ -110,9 +110,9 @@ class FirmwareSnaps(object):
 			I, Q = self.read_accum_snap()
 			mags =(np.sqrt(I**2 + Q**2))[:freqlen]
 			# divide by number of accumulations
-			mags /= ( (self.accum_len - 1) / 2048) 
+			mags /= ( (self.accum_len) / 512) 
 			# put into mV
-		        mags = 1000. * (mags/(2**15 - 1)) 	
+		        mags = 1000. * (mags/(2**17)) 	
 			plt.ylim((np.min(mags) - 0.001,np.max(mags) + 0.001))
 			line1.set_ydata(mags)
 			plt.draw()
