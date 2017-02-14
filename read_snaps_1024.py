@@ -9,9 +9,9 @@ import casperfpga
 class FirmwareSnaps(object):
     
     	def __init__(self):
-		self.fpga = casperfpga.katcp_fpga.KatcpFpga("192.168.40.89",timeout=120.)
+		self.fpga = casperfpga.katcp_fpga.KatcpFpga("192.168.40.66",timeout=120.)
 		self.dds_shift = 305
-		self.accum_len = 2**21 
+		self.accum_len = 2**19 
 		self.fft_len = 1024
 	
     	def menu(self,prompt,options):
@@ -37,18 +37,18 @@ class FirmwareSnaps(object):
 		plot1 = fig.add_subplot(211)
 		line1, = plot1.plot(np.arange(0,2048), np.zeros(2048), 'r-', linewidth = 2)
 		plot1.set_title('I', size = 20)
+		plot1.set_ylabel('mV', size = 20)
 		plt.xlim(0,1024)
-		plt.ylim(-1.1,1.1)
-		plt.yticks(np.arange(-1.1, 1.1, 0.05))
-		#plt.ylim(-2**12 - 1,2**12 -1)
+		plt.ylim(-1200,1200)
+		plt.yticks(np.arange(-1200, 1200, 100))
 		plt.grid()
 		plot2 = fig.add_subplot(212)
 		line2, = plot2.plot(np.arange(0,2048), np.zeros(2048), 'b-', linewidth = 2)
 		plot2.set_title('Q', size = 20)
+		plot2.set_ylabel('mV', size = 20)
 		plt.xlim(0,1024)
-		plt.ylim(-1.1,1.1)
-		plt.yticks(np.arange(-1.1, 1.1, 0.05))
-		#plt.ylim(-2**12-1,2**12-1)
+		plt.ylim(-1200,1200)
+		plt.yticks(np.arange(-1200, 1200, 100))
 		plt.grid()
 		plt.tight_layout()
 		plt.show(block = False)
@@ -62,8 +62,8 @@ class FirmwareSnaps(object):
 			self.fpga.write_int('adc_snap_trig',1)    
 			self.fpga.write_int('adc_snap_trig',0)
 			adc = (np.fromstring(self.fpga.read('adc_snap_bram',(2**10)*8),dtype='>i2')).astype('float')
-			adc /= (2**16 - 1)
-			adc *= 1.1
+			adc /= (2**12 - 1)
+			adc *= 1100
 			# ADC full scale is 2.2 V
 			I = np.hstack(zip(adc[0::4],adc[1::4]))
 			Q = np.hstack(zip(adc[2::4],adc[3::4]))
@@ -89,7 +89,7 @@ class FirmwareSnaps(object):
 
 	def plotAccum(self):
 		# Generates a plot stream from read_avgIQ_snap(). To view, run plotAvgIQ.py in a separate terminal
-		freqlen =600
+		freqlen = 1000
 		fig = plt.figure(num= None, figsize=(20,12))
 		#plt.suptitle('Averaged FFT, Accum. Frequency = ' + str(self.accum_freq), fontsize=20)
 		plot1 = fig.add_subplot(111)
@@ -112,7 +112,8 @@ class FirmwareSnaps(object):
 			# divide by number of accumulations
 			mags /= ( (self.accum_len) / 512) 
 			# put into mV
-		        mags = 1000. * (mags/(2**17)) 	
+		        mags /= (2**32 - 1)
+			mags *= 1000
 			plt.ylim((np.min(mags) - 0.001,np.max(mags) + 0.001))
 			line1.set_ydata(mags)
 			plt.draw()
@@ -157,7 +158,7 @@ class FirmwareSnaps(object):
 			mag0 = np.sqrt(I0**2 + Q0**2)
 			mag1 = np.sqrt(I1**2 + Q1**2)
 			fft_mags = np.hstack(zip(mag0,mag1))
-			fft_mags /= (2**15 - 1)
+			fft_mags /= (2**18 - 1)
 			fft_mags *= 1000. # put into mV
 			plt.ylim((0,np.max(fft_mags) + 0.5))
 			line1.set_ydata((fft_mags))
@@ -175,22 +176,25 @@ class FirmwareSnaps(object):
 			self.fpga.write_int('chan_select', chan/2)
 		self.fpga.write_int('rawfftbin_ctrl', 0)
 		self.fpga.write_int('mixerout_ctrl', 0)
+		self.fpga.write_int('lpf_ctrl', 0)
 		self.fpga.write_int('rawfftbin_ctrl', 1)
 		self.fpga.write_int('mixerout_ctrl', 1)
+		self.fpga.write_int('lpf_ctrl', 1)
 		mixer_in = np.fromstring(self.fpga.read('rawfftbin_bram', 16*2**14),dtype='>i2').astype('float')
 		if mixer_out:
 			mixer_out = np.fromstring(self.fpga.read('mixerout_bram', 8*2**14),dtype='>i2').astype('float')
-			return mixer_in, mixer_out
+			lpf_out = np.fromstring(self.fpga.read('lpf_bram', 8*2**14),dtype='>i2').astype('float')
+			return mixer_in, mixer_out,lpf_out
 		else:
 			return mixer_in
 	
-	def mixer_comp(self,chan, find_shift = True, I0 = True, plot = True):
+	def mixer_comp(self,chan, find_shift = True, I0 = True):
 		# Plots the dds mixer data at the shift found by return_shift     
 		if find_shift:
 			shift = self.return_shift(chan)
 		else: 
 			shift = self.dds_shift
-			mixer_in, mixer_out = self.read_mixer_snaps(shift, chan)    
+			mixer_in, mixer_out, lpf = self.read_mixer_snaps(shift, chan)    
 		if I0:
 			I_in = mixer_in[0::8]
 			Q_in = mixer_in[1::8]
@@ -198,6 +202,8 @@ class FirmwareSnaps(object):
 			Q_dds_in = mixer_in[3::8]
 			I_out = mixer_out[0::4]
 			Q_out = mixer_out[1::4]
+			I_lpf = lpf[0::4]
+			Q_lpf = lpf[1::4]
 		else:
 			I_in = mixer_in[4::8]
 			Q_in = mixer_in[5::8]
@@ -205,114 +211,68 @@ class FirmwareSnaps(object):
 			Q_dds_in = mixer_in[7::8]
 			I_out = mixer_out[2::4]
 			Q_out = mixer_out[3::4]
-		# Mixer in 
-		I_out_guess = ((I_in * I_dds_in) + (Q_in * Q_dds_in))
-		Q_out_guess = (-1.*(I_in * Q_dds_in) + (Q_in * I_dds_in))
-		# Mixer out 
-		if plot:
-			plt.figure()
-			if I0:
-				plt.suptitle('DDS Shift = ' + str(shift) + ', Freq = ' + str(self.test_freq/1.0e6) + ' MHz,' + ' I0')
-			else:
-				plt.suptitle('DDS Shift = ' + str(shift) + ', Freq = ' + str(self.test_freq/1.0e6) + ' MHz,' + ' I1')
-			plt.subplot(2,3,1)
-			plt.plot(I_in, label = 'I in', color = 'black', linewidth = 2)
-			plt.plot(I_dds_in, label = 'I dds in', color = 'red')
-			plt.xlim((0,300))
-			plt.ylim((-1.0,1.0))
-			plt.legend()
-			plt.grid()
-			plt.subplot(2,3,2)
-			plt.legend()
-			plt.grid()
-			plt.plot(Q_in, label = 'Q in', color = 'green', linewidth = 2)
-			plt.plot(Q_dds_in, label = 'Q dds in', color = 'blue')
-			plt.xlim((0,300))
-			plt.ylim((-1.0,1.0))
-			plt.legend()
-			plt.grid()
-			plt.subplot(2,3,3)
-			plt.plot(I_dds_in, label = 'I dds in', color = 'red')
-			plt.plot(Q_dds_in, label = 'Q dds in', color = 'blue')
-			plt.xlim((0,300))
-			plt.ylim((-1.0,1.0))
-			plt.legend()
-			plt.grid()
-			plt.subplot(2,3,4)
-			plt.plot(I_in, label = 'I in', color = 'black', linewidth = 2)
-			plt.plot(Q_in, label = 'Q in', color = 'green', linewidth = 2)
-			plt.xlim((0,300))
-			plt.ylim((-1.0,1.0))
-			plt.legend()
-			plt.grid()
-			plt.subplot(2,3,5)
-			plt.plot(I_out_guess, label = 'I out predict', color = 'black', linewidth = 2)
-			plt.plot(Q_out_guess, label = 'Q out predict', color = 'green', linewidth = 2)
-			plt.xlim((0,300))
-			plt.ylim((-2.0,2.0))
-			plt.legend()
-			plt.grid()
-			plt.subplot(2,3,6)
-			plt.plot(I_out, label = 'I out', color = 'black', linewidth = 2)
-			plt.plot(Q_out, label = 'Q out', color = 'green', linewidth = 2)
-			plt.xlim((0,300))
-			plt.ylim((-2.0,2.0))
-			plt.legend()
-			plt.grid()
-			plt.show()
-
-		return I_in, Q_in, I_dds_in, Q_dds_in, I_out, Q_out
+			I_lpf = lpf[2::4]
+			Q_lpf = lpf[3::4]
+		return I_in, Q_in, I_dds_in, Q_dds_in, I_out, Q_out, I_lpf, Q_lpf
 
 	def plotMixer(self, chan):
 		fig = plt.figure(figsize=(20,12))
 		# I and Q
-		plot1 = fig.add_subplot(311)
+		plot1 = fig.add_subplot(411)
 		plot1.set_ylabel('mV')
 		plt.title('Chan ' + str(chan) + ' in', size = 20)
 		line1, = plot1.plot(range(16384), np.zeros(16384), label = 'I in', color = 'green', linewidth = 2)
 		line2, = plot1.plot(range(16384), np.zeros(16384), label = 'Q in', color = 'black', linewidth = 2)
 		plt.xlim((0,1024))
-		plt.ylim((-5.0e1,5.0e1))
+		plt.ylim((-200,200))
 		plt.grid()
 		# DDS I and Q
-		plot2 = fig.add_subplot(312)
+		plot2 = fig.add_subplot(412)
 		plot2.set_ylabel('mV')
 		plt.title('DDS', size = 20)
 		line3, = plot2.plot(range(16384), np.zeros(16384), label = 'I dds', color = 'red', linewidth = 2)
 		line4, = plot2.plot(range(16384), np.zeros(16384), label = 'Q dds', color = 'black', linewidth = 2)
 		plt.xlim((0,1024))
-		plt.ylim((-1.0e3,1.0e3))
+		plt.ylim((-600,600))
 		plt.grid()
 		# Mixer output
-		plot3 = fig.add_subplot(313)
+		plot3 = fig.add_subplot(413)
 		plot3.set_ylabel('mV')
 		plt.title('Chan out', size = 20)
 		line5, = plot3.plot(range(16384), np.zeros(16384), label = 'I out', color = 'green', linewidth = 2)
 		#line6, = plot3.plot(range(16384), np.zeros(16384), label = 'Q out', color = 'black', linewidth = 2)
 		plt.xlim((0,1024))
-		#plt.ylim((-1,1))
-		plt.tight_layout()
+		plt.ylim((-10,100))
 		plt.grid()
+		plot4 = fig.add_subplot(414)
+		plot4.set_ylabel('mV')
+		line7, = plot4.plot(range(16384), np.zeros(16384), label = 'I out', color = 'red', linewidth = 2)
+		#line8, = plot4.plot(range(16384), np.zeros(16384), label = 'Q out', color = 'black', linewidth = 2)
+		plt.ylim((-10,100))
+		plt.xlim((0,1024))
+		plt.grid()
+		plt.tight_layout()
 		plt.show(block = False)
 		count = 0
 		stop = 10000
 		while (count < stop):
 			if (chan % 2) > 0:
-				I_in, Q_in, I_dds_in, Q_dds_in, I_out, Q_out = self.mixer_comp(chan, find_shift = False, I0 = False, plot = False)
+				I_in, Q_in, I_dds_in, Q_dds_in, I_out, Q_out, I_lpf, Q_lpf = self.mixer_comp(chan, find_shift = False, I0 = False)
 			else:
-				I_in, Q_in, I_dds_in, Q_dds_in, I_out, Q_out = self.mixer_comp(chan, find_shift = False, plot = False)
+				I_in, Q_in, I_dds_in, Q_dds_in, I_out, Q_out, I_lpf, Q_lpf = self.mixer_comp(chan, find_shift = False)
 			line1.set_ydata((I_in/(2**18 - 1))*1000)
 			line2.set_ydata((Q_in/(2**18 - 1))*1000)
 			#plot1.set_ylim(( np.min(I_in) - 1.0e-3 ,np.max(I_in) + 1.0e-3))
-			plt.draw()
 			line3.set_ydata((I_dds_in/(2**16 - 1))*1000)
 			line4.set_ydata((Q_dds_in/(2**16 - 1))*1000)
 			#plot2.set_ylim(( np.min(I_dds_in) - 1.0e-3 ,np.max(I_dds_in) + 1.0e-3))
-			plt.draw()
-			mag = (np.sqrt((I_out**2 + Q_out**2))/(2**19 -1))*1000
-			line5.set_ydata(mag)
-			plot3.set_ylim(( np.min(mag) - 0.05 ,np.max(mag) + 0.05))
-			#line6.set_ydata(Q_out)
+			#line5.set_ydata((I_out/(2**19 - 1))*1000)
+			line5.set_ydata((np.sqrt(I_out**2 + Q_out**2)/(2**19 - 1))*1000)
+			#line6.set_ydata((Q_out/(2**19 - 1))*1000)
+			#plot3.set_ylim(( np.min(I_out) - 1.0e-3 ,np.max(I_out) + 1.0e-3))
+			#line7.set_ydata((I_lpf/(2**19 - 1))*1000)
+			#line8.set_ydata((Q_lpf/(2**19 - 1))*1000)
+			line7.set_ydata((np.sqrt(I_lpf**2 + Q_lpf**2)/(2**19 - 1))*1000)
 			plt.draw()
 			#plt.savefig('/home/user1/blastfirmware/images/' + 'mixer0' + str(int(count)) + '.png', dpi=fig.dpi)
 			count += 1
