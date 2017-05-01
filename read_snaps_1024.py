@@ -9,7 +9,7 @@ import casperfpga
 class FirmwareSnaps(object):
     
     	def __init__(self):
-		self.fpga = casperfpga.katcp_fpga.KatcpFpga("192.168.40.66",timeout=120.)
+		self.fpga = casperfpga.katcp_fpga.KatcpFpga("192.168.40.65",timeout=120.)
 		self.dds_shift = 305
 		self.accum_len = 2**19 
 		self.fft_len = 1024
@@ -61,12 +61,13 @@ class FirmwareSnaps(object):
 			self.fpga.write_int('adc_snap_trig',0)    
 			self.fpga.write_int('adc_snap_trig',1)    
 			self.fpga.write_int('adc_snap_trig',0)
-			adc = (np.fromstring(self.fpga.read('adc_snap_bram',(2**10)*8),dtype='>i2')).astype('float')
-			adc /= (2**12 - 1)
+			adc = (np.fromstring(self.fpga.read('adc_snap_bram',(2**10)*8),dtype='>h')).astype('float')
+			adc /= (2**16)
 			adc *= 1100
 			# ADC full scale is 2.2 V
 			I = np.hstack(zip(adc[0::4],adc[1::4]))
 			Q = np.hstack(zip(adc[2::4],adc[3::4]))
+			#print np.max(Q) + np.abs(np.min(Q))
 			line1.set_ydata(I)
 			line2.set_ydata(Q)
 			plt.draw()
@@ -93,7 +94,7 @@ class FirmwareSnaps(object):
 		fig = plt.figure(num= None, figsize=(20,12))
 		#plt.suptitle('Averaged FFT, Accum. Frequency = ' + str(self.accum_freq), fontsize=20)
 		plot1 = fig.add_subplot(111)
-		line1, = plot1.plot(np.arange(0,freqlen),np.zeros(freqlen), '#FF4500')
+		line1, = plot1.plot(np.arange(0,freqlen),np.ones(freqlen), '#FF4500')
 		line1.set_linestyle('None')
 		line1.set_marker('.')
 		plt.xlabel('Channel #',fontsize = 20)
@@ -101,6 +102,8 @@ class FirmwareSnaps(object):
 		plt.xticks(np.arange(0,self.fft_len,5))
 		plt.xlim(0,freqlen)
 		plt.xticks(np.arange(0,freqlen))
+		plt.ylim(bottom = 1.)
+		plt.ylim(top = 5.0e2)
 		plt.grid()
 		plt.tight_layout()
 		plt.show(block = False)
@@ -109,12 +112,15 @@ class FirmwareSnaps(object):
 		while(count < stop):
 			I, Q = self.read_accum_snap()
 			mags =(np.sqrt(I**2 + Q**2))[:freqlen]
+			mags = np.concatenate((mags[len(mags)/2:],mags[:len(mags)/2]))
 			# divide by number of accumulations
 			mags /= ( (self.accum_len) / 512) 
 			# put into mV
-		        mags /= (2**32 - 1)
+		        mags /= (2**17)
 			mags *= 1000
-			plt.ylim((np.min(mags) - 0.001,np.max(mags) + 0.001))
+			mags = 20*np.log10(mags)
+			#plt.ylim((np.min(mags) - 0.001,np.max(mags) + 0.001))
+			plt.ylim(1, 60)
 			line1.set_ydata(mags)
 			plt.draw()
 			count += 1
