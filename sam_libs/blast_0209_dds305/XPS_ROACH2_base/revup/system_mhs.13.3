@@ -1,0 +1,1114 @@
+# ##############################################################################
+# Target Board:  ROACH v2.0
+# Family:	     virtex6
+# Device:	     xc6vsx475t
+# Package:	     ff1759
+# Speed Grade:	 -1
+# Processor:     None
+# System clock frequency: 100.000000 MHz
+# ##############################################################################
+
+ PARAMETER VERSION = 2.1.0
+
+
+# Clock Ports
+ PORT sys_clk_n = sys_clk_n, DIR = I, SIGIS = CLK, CLK_FREQ = 100000000
+ PORT sys_clk_p = sys_clk_p, DIR = I, SIGIS = CLK, CLK_FREQ = 100000000
+ #PORT aux_clk_n = aux_clk_n, DIR = I, SIGIS = CLK, CLK_FREQ = 100000000
+ #PORT aux_clk_p = aux_clk_p, DIR = I, SIGIS = CLK, CLK_FREQ = 100000000
+PORT aux_clk_n  = aux_clk_n,  DIR = I, SIGIS = CLK, CLK_FREQ = 256000000
+PORT aux_clk_p  = aux_clk_p,  DIR = I, SIGIS = CLK, CLK_FREQ = 256000000
+# PORT aux_synci_n = aux_synci_n,   DIR = I, SIGIS = CLK, CLK_FREQ = 200000000
+# PORT aux_synci_p = aux_synci_p,   DIR = I, SIGIS = CLK, CLK_FREQ = 200000000
+# PORT aux_synco_n = aux_synco_n,   DIR = I, SIGIS = CLK, CLK_FREQ = 200000000
+# PORT aux_synco_p = aux_synco_p,   DIR = I, SIGIS = CLK, CLK_FREQ = 200000000
+# EPB Ports
+ PORT epb_clk_in = epb_clk_in, DIR = I
+ PORT epb_data = epb_data, DIR = IO, VEC = [0:31]
+ PORT epb_addr = epb_addr, DIR = I, VEC = [5:29]
+ PORT epb_cs_n = epb_cs_n, DIR = I
+ PORT epb_be_n = epb_be_n, DIR = I, VEC = [0:3]
+ PORT epb_r_w_n = epb_r_w_n, DIR = I
+ PORT epb_oe_n = epb_oe_n, DIR = I
+ PORT epb_doe_n = epb_doe_n, DIR = O
+ PORT epb_rdy = epb_rdy, DIR = O
+ PORT ppc_irq_n = ppc_irq_n, DIR = O
+
+BEGIN temac
+  PARAMETER INSTANCE  = temac_inst
+  PARAMETER HW_VER    = 1.00.a
+  PARAMETER REG_SGMII = 1
+  PARAMETER PHY_ADR   = 0
+  PORT clk_125        = clk_125
+  PORT reset          = sys_reset
+  BUS_INTERFACE SGMII = sgmii
+  BUS_INTERFACE MAC   = mac
+END
+
+BEGIN sgmii_phy
+  PARAMETER INSTANCE  = sgmii_phy_inst
+  PARAMETER HW_VER    = 1.00.a
+  PORT mgt_rx_n       = sgmii_rx_n_i
+  PORT mgt_rx_p       = sgmii_rx_p_i
+  PORT mgt_tx_n       = sgmii_tx_n_i
+  PORT mgt_tx_p       = sgmii_tx_p_i
+  PORT mgt_clk_n      = sgmii_clkref_n_i
+  PORT mgt_clk_p      = sgmii_clkref_p_i
+  PORT mgt_reset      = sys_reset
+  PORT clk_125        = clk_125
+  BUS_INTERFACE SGMII = sgmii
+END
+
+  # MARVELL PHY SGMII Pins
+PORT sgmii_rx_n      = sgmii_rx_n_i, DIR = I
+PORT sgmii_rx_p      = sgmii_rx_p_i, DIR = I
+PORT sgmii_tx_n      = sgmii_tx_n_i, DIR = O
+PORT sgmii_tx_p      = sgmii_tx_p_i, DIR = O
+PORT sgmii_clkref_n  = sgmii_clkref_n_i, DIR = I
+PORT sgmii_clkref_p  = sgmii_clkref_p_i, DIR = I
+
+
+
+
+
+
+
+
+BEGIN roach_infrastructure
+ PARAMETER INSTANCE = infrastructure_inst
+ PARAMETER HW_VER = 1.00.a
+  PARAMETER CLK_FREQ     = 256
+  PARAMETER CLK_HIGH_LOW = low
+  PARAMETER MULTIPLY     = 8
+  PARAMETER DIVIDE       = 8
+  PARAMETER DIVCLK       = 1
+ #PARAMETER CLK_FREQ = 100
+ PORT sys_clk_n = sys_clk_n
+ PORT sys_clk_p = sys_clk_p
+ PORT aux_clk_n = aux_clk_n
+ PORT aux_clk_p = aux_clk_p
+# PORT aux_synci_n   = aux1_clk_n
+# PORT aux_synci_p   = aux1_clk_p
+# PORT aux_synco_n   = aux1_clk_n
+# PORT aux_synco_p   = aux1_clk_p
+ PORT epb_clk_in = epb_clk_in
+ PORT sys_clk = sys_clk
+ PORT sys_clk90 = sys_clk90
+ PORT sys_clk180 = sys_clk180
+ PORT sys_clk270 = sys_clk270
+ PORT sys_clk_lock = sys_clk_lock
+ PORT sys_clk2x = sys_clk2x
+ PORT sys_clk2x90 = sys_clk2x90
+ PORT sys_clk2x180 = sys_clk2x180
+ PORT sys_clk2x270 = sys_clk2x270
+ PORT aux_clk       = aux_clk
+ PORT aux_clk90     = aux_clk90
+ PORT aux_clk180    = aux_clk180
+ PORT aux_clk270    = aux_clk270
+ PORT aux_clk2x     = aux_clk2x
+ PORT aux_clk2x90   = aux_clk2x90
+ PORT aux_clk2x180  = aux_clk2x180
+ PORT aux_clk2x270  = aux_clk2x270
+ PORT epb_clk = epb_clk
+ PORT idelay_rst = power_on_rst
+ PORT idelay_rdy = idelay_rdy
+ PORT op_power_on_rst  = power_on_rst
+ PORT clk_100 = clk_100
+END
+
+BEGIN reset_block
+ PARAMETER INSTANCE = reset_block_inst
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER WIDTH = 1000
+ PORT clk = sys_clk
+ PORT ip_async_reset_i = power_on_rst
+ PORT ip_reset_i = power_on_rst
+ PORT op_reset_o = sys_reset
+END
+
+BEGIN opb_v20
+ PARAMETER INSTANCE = opb0
+ PARAMETER HW_VER = 1.10.c
+ PARAMETER C_EXT_RESET_HIGH = 1
+ PARAMETER C_REG_GRANTS = 0
+ PORT SYS_Rst = power_on_rst
+ PORT OPB_Clk = epb_clk
+END
+
+BEGIN epb32_opb_bridge
+ PARAMETER INSTANCE = epb_opb_bridge_inst
+ PARAMETER HW_VER = 1.00.a
+ BUS_INTERFACE MOPB = opb0
+ PORT epb_clk = epb_clk
+ PORT epb_cs_n = epb_cs_n
+ PORT epb_oe_n = epb_oe_n
+ PORT epb_r_w_n = epb_r_w_n
+ PORT epb_be_n = epb_be_n
+ PORT epb_addr = epb_addr
+ PORT epb_doe_n = epb_doe_n
+ PORT epb_data_oe_n = epb_data_oe_n
+ PORT epb_data_i = epb_data_i
+ PORT epb_data_o = epb_data_o
+ PORT epb_rdy = epb_rdy
+END
+
+BEGIN epb_infrastructure
+ PARAMETER INSTANCE = epb_infrastructure_inst
+ PARAMETER HW_VER = 1.00.a
+ PORT epb_data_oe_n_i = epb_data_oe_n
+ PORT epb_data_out_i = epb_data_o
+ PORT epb_data_in_o = epb_data_i
+ PORT epb_data_buf = epb_data
+END
+
+BEGIN sys_block
+ PARAMETER INSTANCE = sys_block_inst
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER BOARD_ID = 0xbabe
+ PARAMETER REV_MAJOR = 0x1
+ PARAMETER REV_MINOR = 0x0
+ PARAMETER REV_RCS = 0x0
+ PARAMETER RCS_UPTODATE = 0x0
+ PARAMETER C_BASEADDR = 0x00000000
+ PARAMETER C_HIGHADDR = 0x0000FFFF
+ BUS_INTERFACE SOPB = opb0
+ PORT OPB_Clk = epb_clk
+ PORT soft_reset = soft_reset
+ PORT irq_n = ppc_irq_n
+ PORT app_irq = 0x0000
+ #PORT fab_clk    = sys_clk
+  PORT fab_clk    = adc1_clk
+END
+
+
+
+##############################################
+# User XSG IP core                           #
+##############################################
+
+BEGIN blast_0209_dds305
+ PARAMETER INSTANCE = blast_0209_dds305_XSG_core_config
+ PARAMETER HW_VER = 1.00.a
+ PORT clk = adc1_clk
+ PORT blast_0209_dds305_QDR_LUT_qdr0_ack = blast_0209_dds305_QDR_LUT_qdr0_ack
+ PORT blast_0209_dds305_QDR_LUT_qdr0_cal_fail = blast_0209_dds305_QDR_LUT_qdr0_cal_fail
+ PORT blast_0209_dds305_QDR_LUT_qdr0_data_out = blast_0209_dds305_QDR_LUT_qdr0_data_out
+ PORT blast_0209_dds305_QDR_LUT_qdr0_data_valid = blast_0209_dds305_QDR_LUT_qdr0_data_valid
+ PORT blast_0209_dds305_QDR_LUT_qdr0_phy_ready = blast_0209_dds305_QDR_LUT_qdr0_phy_ready
+ PORT blast_0209_dds305_QDR_LUT_qdr0_address = blast_0209_dds305_QDR_LUT_qdr0_address
+ PORT blast_0209_dds305_QDR_LUT_qdr0_be = blast_0209_dds305_QDR_LUT_qdr0_be
+ PORT blast_0209_dds305_QDR_LUT_qdr0_data_in = blast_0209_dds305_QDR_LUT_qdr0_data_in
+ PORT blast_0209_dds305_QDR_LUT_qdr0_rd_en = blast_0209_dds305_QDR_LUT_qdr0_rd_en
+ PORT blast_0209_dds305_QDR_LUT_qdr0_wr_en = blast_0209_dds305_QDR_LUT_qdr0_wr_en
+ PORT blast_0209_dds305_QDR_LUT_qdr1_ack = blast_0209_dds305_QDR_LUT_qdr1_ack
+ PORT blast_0209_dds305_QDR_LUT_qdr1_cal_fail = blast_0209_dds305_QDR_LUT_qdr1_cal_fail
+ PORT blast_0209_dds305_QDR_LUT_qdr1_data_out = blast_0209_dds305_QDR_LUT_qdr1_data_out
+ PORT blast_0209_dds305_QDR_LUT_qdr1_data_valid = blast_0209_dds305_QDR_LUT_qdr1_data_valid
+ PORT blast_0209_dds305_QDR_LUT_qdr1_phy_ready = blast_0209_dds305_QDR_LUT_qdr1_phy_ready
+ PORT blast_0209_dds305_QDR_LUT_qdr1_address = blast_0209_dds305_QDR_LUT_qdr1_address
+ PORT blast_0209_dds305_QDR_LUT_qdr1_be = blast_0209_dds305_QDR_LUT_qdr1_be
+ PORT blast_0209_dds305_QDR_LUT_qdr1_data_in = blast_0209_dds305_QDR_LUT_qdr1_data_in
+ PORT blast_0209_dds305_QDR_LUT_qdr1_rd_en = blast_0209_dds305_QDR_LUT_qdr1_rd_en
+ PORT blast_0209_dds305_QDR_LUT_qdr1_wr_en = blast_0209_dds305_QDR_LUT_qdr1_wr_en
+ PORT blast_0209_dds305_QDR_LUT_we_qdr_user_data_out = blast_0209_dds305_QDR_LUT_we_qdr_user_data_out
+ PORT blast_0209_dds305_accum_snap_bram_data_out = blast_0209_dds305_accum_snap_bram_data_out
+ PORT blast_0209_dds305_accum_snap_bram_addr = blast_0209_dds305_accum_snap_bram_addr
+ PORT blast_0209_dds305_accum_snap_bram_data_in = blast_0209_dds305_accum_snap_bram_data_in
+ PORT blast_0209_dds305_accum_snap_bram_we = blast_0209_dds305_accum_snap_bram_we
+ PORT blast_0209_dds305_accum_snap_ctrl_user_data_out = blast_0209_dds305_accum_snap_ctrl_user_data_out
+ PORT blast_0209_dds305_accum_snap_status_user_data_in = blast_0209_dds305_accum_snap_status_user_data_in
+ PORT blast_0209_dds305_adc_mkid_user_data_i0 = blast_0209_dds305_adc_mkid_user_data_i0
+ PORT blast_0209_dds305_adc_mkid_user_data_i1 = blast_0209_dds305_adc_mkid_user_data_i1
+ PORT blast_0209_dds305_adc_mkid_user_data_q0 = blast_0209_dds305_adc_mkid_user_data_q0
+ PORT blast_0209_dds305_adc_mkid_user_data_q1 = blast_0209_dds305_adc_mkid_user_data_q1
+ PORT blast_0209_dds305_adc_mkid_user_sync = blast_0209_dds305_adc_mkid_user_sync
+ PORT blast_0209_dds305_adc_snap_bram_data_out = blast_0209_dds305_adc_snap_bram_data_out
+ PORT blast_0209_dds305_adc_snap_bram_addr = blast_0209_dds305_adc_snap_bram_addr
+ PORT blast_0209_dds305_adc_snap_bram_data_in = blast_0209_dds305_adc_snap_bram_data_in
+ PORT blast_0209_dds305_adc_snap_bram_we = blast_0209_dds305_adc_snap_bram_we
+ PORT blast_0209_dds305_adc_snap_ctrl_user_data_out = blast_0209_dds305_adc_snap_ctrl_user_data_out
+ PORT blast_0209_dds305_adc_snap_status_user_data_in = blast_0209_dds305_adc_snap_status_user_data_in
+ PORT blast_0209_dds305_adc_snap_trig_user_data_out = blast_0209_dds305_adc_snap_trig_user_data_out
+ PORT blast_0209_dds305_bins_user_data_out = blast_0209_dds305_bins_user_data_out
+ PORT blast_0209_dds305_chan_select_user_data_out = blast_0209_dds305_chan_select_user_data_out
+ PORT blast_0209_dds305_dac_mkid1_dac_data_i0 = blast_0209_dds305_dac_mkid1_dac_data_i0
+ PORT blast_0209_dds305_dac_mkid1_dac_data_i1 = blast_0209_dds305_dac_mkid1_dac_data_i1
+ PORT blast_0209_dds305_dac_mkid1_dac_data_q0 = blast_0209_dds305_dac_mkid1_dac_data_q0
+ PORT blast_0209_dds305_dac_mkid1_dac_data_q1 = blast_0209_dds305_dac_mkid1_dac_data_q1
+ PORT blast_0209_dds305_dac_mkid1_dac_sync_i = blast_0209_dds305_dac_mkid1_dac_sync_i
+ PORT blast_0209_dds305_dac_mkid1_dac_sync_q = blast_0209_dds305_dac_mkid1_dac_sync_q
+ PORT blast_0209_dds305_dac_mkid1_not_reset = blast_0209_dds305_dac_mkid1_not_reset
+ PORT blast_0209_dds305_dac_reset_user_data_out = blast_0209_dds305_dac_reset_user_data_out
+ PORT blast_0209_dds305_dds_shift_user_data_out = blast_0209_dds305_dds_shift_user_data_out
+ PORT blast_0209_dds305_fft_shift_user_data_out = blast_0209_dds305_fft_shift_user_data_out
+ PORT blast_0209_dds305_fft_snap_bram_data_out = blast_0209_dds305_fft_snap_bram_data_out
+ PORT blast_0209_dds305_fft_snap_bram_addr = blast_0209_dds305_fft_snap_bram_addr
+ PORT blast_0209_dds305_fft_snap_bram_data_in = blast_0209_dds305_fft_snap_bram_data_in
+ PORT blast_0209_dds305_fft_snap_bram_we = blast_0209_dds305_fft_snap_bram_we
+ PORT blast_0209_dds305_fft_snap_ctrl_user_data_out = blast_0209_dds305_fft_snap_ctrl_user_data_out
+ PORT blast_0209_dds305_fft_snap_status_user_data_in = blast_0209_dds305_fft_snap_status_user_data_in
+ PORT blast_0209_dds305_load_bins_user_data_out = blast_0209_dds305_load_bins_user_data_out
+ PORT blast_0209_dds305_mixerout_bram_data_out = blast_0209_dds305_mixerout_bram_data_out
+ PORT blast_0209_dds305_mixerout_bram_addr = blast_0209_dds305_mixerout_bram_addr
+ PORT blast_0209_dds305_mixerout_bram_data_in = blast_0209_dds305_mixerout_bram_data_in
+ PORT blast_0209_dds305_mixerout_bram_we = blast_0209_dds305_mixerout_bram_we
+ PORT blast_0209_dds305_mixerout_ctrl_user_data_out = blast_0209_dds305_mixerout_ctrl_user_data_out
+ PORT blast_0209_dds305_mixerout_status_user_data_in = blast_0209_dds305_mixerout_status_user_data_in
+ PORT blast_0209_dds305_one_GbE_app_dbg_data = blast_0209_dds305_one_GbE_app_dbg_data
+ PORT blast_0209_dds305_one_GbE_app_dbg_dvld = blast_0209_dds305_one_GbE_app_dbg_dvld
+ PORT blast_0209_dds305_one_GbE_app_rx_badframe = blast_0209_dds305_one_GbE_app_rx_badframe
+ PORT blast_0209_dds305_one_GbE_app_rx_data = blast_0209_dds305_one_GbE_app_rx_data
+ PORT blast_0209_dds305_one_GbE_app_rx_dvld = blast_0209_dds305_one_GbE_app_rx_dvld
+ PORT blast_0209_dds305_one_GbE_app_rx_eof = blast_0209_dds305_one_GbE_app_rx_eof
+ PORT blast_0209_dds305_one_GbE_app_rx_overrun = blast_0209_dds305_one_GbE_app_rx_overrun
+ PORT blast_0209_dds305_one_GbE_app_rx_srcip = blast_0209_dds305_one_GbE_app_rx_srcip
+ PORT blast_0209_dds305_one_GbE_app_rx_srcport = blast_0209_dds305_one_GbE_app_rx_srcport
+ PORT blast_0209_dds305_one_GbE_app_tx_afull = blast_0209_dds305_one_GbE_app_tx_afull
+ PORT blast_0209_dds305_one_GbE_app_tx_overflow = blast_0209_dds305_one_GbE_app_tx_overflow
+ PORT blast_0209_dds305_one_GbE_app_rx_ack = blast_0209_dds305_one_GbE_app_rx_ack
+ PORT blast_0209_dds305_one_GbE_app_rx_rst = blast_0209_dds305_one_GbE_app_rx_rst
+ PORT blast_0209_dds305_one_GbE_app_tx_data = blast_0209_dds305_one_GbE_app_tx_data
+ PORT blast_0209_dds305_one_GbE_app_tx_destip = blast_0209_dds305_one_GbE_app_tx_destip
+ PORT blast_0209_dds305_one_GbE_app_tx_destport = blast_0209_dds305_one_GbE_app_tx_destport
+ PORT blast_0209_dds305_one_GbE_app_tx_dvld = blast_0209_dds305_one_GbE_app_tx_dvld
+ PORT blast_0209_dds305_one_GbE_app_tx_eof = blast_0209_dds305_one_GbE_app_tx_eof
+ PORT blast_0209_dds305_one_GbE_app_tx_rst = blast_0209_dds305_one_GbE_app_tx_rst
+ PORT blast_0209_dds305_overflow_user_data_in = blast_0209_dds305_overflow_user_data_in
+ PORT blast_0209_dds305_pps_gateway = blast_0209_dds305_pps_gateway
+ PORT blast_0209_dds305_pps_start_user_data_out = blast_0209_dds305_pps_start_user_data_out
+ PORT blast_0209_dds305_rawfftbin_bram_data_out = blast_0209_dds305_rawfftbin_bram_data_out
+ PORT blast_0209_dds305_rawfftbin_bram_addr = blast_0209_dds305_rawfftbin_bram_addr
+ PORT blast_0209_dds305_rawfftbin_bram_data_in = blast_0209_dds305_rawfftbin_bram_data_in
+ PORT blast_0209_dds305_rawfftbin_bram_we = blast_0209_dds305_rawfftbin_bram_we
+ PORT blast_0209_dds305_rawfftbin_ctrl_user_data_out = blast_0209_dds305_rawfftbin_ctrl_user_data_out
+ PORT blast_0209_dds305_rawfftbin_status_user_data_in = blast_0209_dds305_rawfftbin_status_user_data_in
+ PORT blast_0209_dds305_rx_ack_user_data_out = blast_0209_dds305_rx_ack_user_data_out
+ PORT blast_0209_dds305_rx_rst_user_data_out = blast_0209_dds305_rx_rst_user_data_out
+ PORT blast_0209_dds305_start_dac_user_data_out = blast_0209_dds305_start_dac_user_data_out
+ PORT blast_0209_dds305_sync_accum_len_user_data_out = blast_0209_dds305_sync_accum_len_user_data_out
+ PORT blast_0209_dds305_sync_accum_reset_user_data_out = blast_0209_dds305_sync_accum_reset_user_data_out
+ PORT blast_0209_dds305_tx_destip_user_data_out = blast_0209_dds305_tx_destip_user_data_out
+ PORT blast_0209_dds305_tx_destport_user_data_out = blast_0209_dds305_tx_destport_user_data_out
+ PORT blast_0209_dds305_tx_rst_user_data_out = blast_0209_dds305_tx_rst_user_data_out
+END
+
+############################
+# Simulink interfaces      #
+############################
+
+# blast_0209_dds305/XSG_core_config
+
+
+# blast_0209_dds305/QDR_LUT/qdr0
+BEGIN qdr_controller
+ PARAMETER INSTANCE = qdr0_controller
+ PARAMETER CLK_FREQ = 256
+ PARAMETER HW_VER   = 1.00.a
+ PARAMETER DATA_WIDTH = 36
+ PARAMETER ADDR_WIDTH = 21
+ PARAMETER BW_WIDTH   = 4
+ PORT clk0    = adc1_clk
+ PORT clk180  = adc1_clk180
+ PORT clk270  = adc1_clk270
+ PORT dly_clk = sys_clk2x
+ PORT idelay_rdy = idelay_rdy
+ PORT reset   = blast_0209_dds305_QDR_LUT_qdr0_reset
+ PORT qdr_k_n       = qdr0_k_n
+ PORT qdr_k         = qdr0_k
+ PORT qdr_d         = qdr0_d
+ PORT qdr_sa        = qdr0_sa
+ PORT qdr_w_n       = qdr0_w_n
+ PORT qdr_r_n       = qdr0_r_n
+ PORT qdr_q         = qdr0_q
+ PORT qdr_dll_off_n = qdr0_dll_off_n
+ PORT phy_rdy  = blast_0209_dds305_QDR_LUT_qdr0_phy_ready
+ PORT cal_fail = blast_0209_dds305_QDR_LUT_qdr0_cal_fail
+ PORT dly_en_o     = blast_0209_dds305_QDR_LUT_qdr0_dly_en_o
+ PORT dly_en_i     = blast_0209_dds305_QDR_LUT_qdr0_dly_en_i
+ PORT dly_inc_dec  = blast_0209_dds305_QDR_LUT_qdr0_dly_inc_dec
+ PORT dly_cntrs    = blast_0209_dds305_QDR_LUT_qdr0_dly_cntrs
+ BUS_INTERFACE MQDR = blast_0209_dds305_QDR_LUT_qdr0
+END
+
+PORT qdr0_k_n       = qdr0_k_n       , DIR = O
+PORT qdr0_k         = qdr0_k         , DIR = O
+PORT qdr0_d         = qdr0_d         , DIR = O, VEC=[35:0]
+PORT qdr0_sa        = qdr0_sa        , DIR = O, VEC=[20:0]
+PORT qdr0_w_n       = qdr0_w_n       , DIR = O
+PORT qdr0_r_n       = qdr0_r_n       , DIR = O
+PORT qdr0_q         = qdr0_q         , DIR = I, VEC=[35:0]
+PORT qdr0_dll_off_n = qdr0_dll_off_n , DIR = O
+
+
+BEGIN opb_qdr_sniffer
+ PARAMETER INSTANCE   = qdr0_sniffer
+ PARAMETER HW_VER     = 1.00.a
+ PARAMETER ENABLE     = 1
+ PARAMETER QDR_DATA_WIDTH = 36
+ PARAMETER QDR_ADDR_WIDTH = 21
+ PARAMETER QDR_BW_WIDTH   = 4
+ PARAMETER C_CONFIG_BASEADDR = 0x0007_0000
+ PARAMETER C_CONFIG_HIGHADDR = 0x0007_FFFF
+ PARAMETER C_BASEADDR = 0x0200_0000
+ PARAMETER C_HIGHADDR = 0x027F_FFFF
+ BUS_INTERFACE SQDR = blast_0209_dds305_QDR_LUT_qdr0
+ BUS_INTERFACE SOPB = opb0
+ BUS_INTERFACE COPB = opb0
+ PORT qdr_clk       = adc1_clk
+ PORT OPB_Clk       = epb_clk
+ PORT OPB_Clk_config= epb_clk
+ PORT slave_addr    = blast_0209_dds305_QDR_LUT_qdr0_address
+ PORT slave_wr_strb = blast_0209_dds305_QDR_LUT_qdr0_wr_en
+ PORT slave_wr_data = blast_0209_dds305_QDR_LUT_qdr0_data_in
+ PORT slave_wr_be   = blast_0209_dds305_QDR_LUT_qdr0_be
+ PORT slave_rd_strb = blast_0209_dds305_QDR_LUT_qdr0_rd_en
+ PORT slave_rd_data = blast_0209_dds305_QDR_LUT_qdr0_data_out
+ PORT slave_rd_dvld = blast_0209_dds305_QDR_LUT_qdr0_data_valid
+ PORT slave_ack     = blast_0209_dds305_QDR_LUT_qdr0_ack
+ PORT dly_clk = sys_clk2x
+ PORT dly_en_o      = blast_0209_dds305_QDR_LUT_qdr0_dly_en_o
+ PORT dly_en_i      = blast_0209_dds305_QDR_LUT_qdr0_dly_en_i
+ PORT dly_inc_dec   = blast_0209_dds305_QDR_LUT_qdr0_dly_inc_dec
+ PORT dly_cntrs     = blast_0209_dds305_QDR_LUT_qdr0_dly_cntrs
+ PORT phy_rdy       = blast_0209_dds305_QDR_LUT_qdr0_phy_ready
+ PORT cal_fail      = blast_0209_dds305_QDR_LUT_qdr0_cal_fail
+ PORT qdr_reset     = blast_0209_dds305_QDR_LUT_qdr0_reset
+END
+
+
+
+# blast_0209_dds305/QDR_LUT/qdr1
+BEGIN qdr_controller
+ PARAMETER INSTANCE = qdr1_controller
+ PARAMETER CLK_FREQ = 256
+ PARAMETER HW_VER   = 1.00.a
+ PARAMETER DATA_WIDTH = 36
+ PARAMETER ADDR_WIDTH = 21
+ PARAMETER BW_WIDTH   = 4
+ PORT clk0    = adc1_clk
+ PORT clk180  = adc1_clk180
+ PORT clk270  = adc1_clk270
+ PORT dly_clk = sys_clk2x
+ PORT idelay_rdy = idelay_rdy
+ PORT reset   = blast_0209_dds305_QDR_LUT_qdr1_reset
+ PORT qdr_k_n       = qdr1_k_n
+ PORT qdr_k         = qdr1_k
+ PORT qdr_d         = qdr1_d
+ PORT qdr_sa        = qdr1_sa
+ PORT qdr_w_n       = qdr1_w_n
+ PORT qdr_r_n       = qdr1_r_n
+ PORT qdr_q         = qdr1_q
+ PORT qdr_dll_off_n = qdr1_dll_off_n
+ PORT phy_rdy  = blast_0209_dds305_QDR_LUT_qdr1_phy_ready
+ PORT cal_fail = blast_0209_dds305_QDR_LUT_qdr1_cal_fail
+ PORT dly_en_o     = blast_0209_dds305_QDR_LUT_qdr1_dly_en_o
+ PORT dly_en_i     = blast_0209_dds305_QDR_LUT_qdr1_dly_en_i
+ PORT dly_inc_dec  = blast_0209_dds305_QDR_LUT_qdr1_dly_inc_dec
+ PORT dly_cntrs    = blast_0209_dds305_QDR_LUT_qdr1_dly_cntrs
+ BUS_INTERFACE MQDR = blast_0209_dds305_QDR_LUT_qdr1
+END
+
+PORT qdr1_k_n       = qdr1_k_n       , DIR = O
+PORT qdr1_k         = qdr1_k         , DIR = O
+PORT qdr1_d         = qdr1_d         , DIR = O, VEC=[35:0]
+PORT qdr1_sa        = qdr1_sa        , DIR = O, VEC=[20:0]
+PORT qdr1_w_n       = qdr1_w_n       , DIR = O
+PORT qdr1_r_n       = qdr1_r_n       , DIR = O
+PORT qdr1_q         = qdr1_q         , DIR = I, VEC=[35:0]
+PORT qdr1_dll_off_n = qdr1_dll_off_n , DIR = O
+
+
+BEGIN opb_qdr_sniffer
+ PARAMETER INSTANCE   = qdr1_sniffer
+ PARAMETER HW_VER     = 1.00.a
+ PARAMETER ENABLE     = 1
+ PARAMETER QDR_DATA_WIDTH = 36
+ PARAMETER QDR_ADDR_WIDTH = 21
+ PARAMETER QDR_BW_WIDTH   = 4
+ PARAMETER C_CONFIG_BASEADDR = 0x0008_0000
+ PARAMETER C_CONFIG_HIGHADDR = 0x0008_FFFF
+ PARAMETER C_BASEADDR = 0x0280_0000
+ PARAMETER C_HIGHADDR = 0x02FF_FFFF
+ BUS_INTERFACE SQDR = blast_0209_dds305_QDR_LUT_qdr1
+ BUS_INTERFACE SOPB = opb0
+ BUS_INTERFACE COPB = opb0
+ PORT qdr_clk       = adc1_clk
+ PORT OPB_Clk       = epb_clk
+ PORT OPB_Clk_config= epb_clk
+ PORT slave_addr    = blast_0209_dds305_QDR_LUT_qdr1_address
+ PORT slave_wr_strb = blast_0209_dds305_QDR_LUT_qdr1_wr_en
+ PORT slave_wr_data = blast_0209_dds305_QDR_LUT_qdr1_data_in
+ PORT slave_wr_be   = blast_0209_dds305_QDR_LUT_qdr1_be
+ PORT slave_rd_strb = blast_0209_dds305_QDR_LUT_qdr1_rd_en
+ PORT slave_rd_data = blast_0209_dds305_QDR_LUT_qdr1_data_out
+ PORT slave_rd_dvld = blast_0209_dds305_QDR_LUT_qdr1_data_valid
+ PORT slave_ack     = blast_0209_dds305_QDR_LUT_qdr1_ack
+ PORT dly_clk = sys_clk2x
+ PORT dly_en_o      = blast_0209_dds305_QDR_LUT_qdr1_dly_en_o
+ PORT dly_en_i      = blast_0209_dds305_QDR_LUT_qdr1_dly_en_i
+ PORT dly_inc_dec   = blast_0209_dds305_QDR_LUT_qdr1_dly_inc_dec
+ PORT dly_cntrs     = blast_0209_dds305_QDR_LUT_qdr1_dly_cntrs
+ PORT phy_rdy       = blast_0209_dds305_QDR_LUT_qdr1_phy_ready
+ PORT cal_fail      = blast_0209_dds305_QDR_LUT_qdr1_cal_fail
+ PORT qdr_reset     = blast_0209_dds305_QDR_LUT_qdr1_reset
+END
+
+
+
+# blast_0209_dds305/QDR_LUT/we_qdr
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_QDR_LUT_we_qdr
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x01000000
+ PARAMETER C_HIGHADDR = 0x010000FF
+ BUS_INTERFACE SOPB = opb0
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_QDR_LUT_we_qdr_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/accum_snap/bram
+BEGIN bram_block_custom
+ PARAMETER INSTANCE = blast_0209_dds305_accum_snap_bram_ramblk
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_PORTA_DWIDTH   = 128
+ PARAMETER C_PORTA_NUM_WE   = 16
+ PARAMETER C_PORTA_DEPTH    = 9
+ PARAMETER C_PORTB_DEPTH    = 11
+ PARAMETER OPTIMIZATION     = Minimum_Area
+ PARAMETER REG_CORE_OUTPUT  = true
+ PARAMETER REG_PRIM_OUTPUT  = true
+ PORT clk           = adc1_clk
+ PORT bram_addr     = blast_0209_dds305_accum_snap_bram_addr    
+ PORT bram_rd_data  = blast_0209_dds305_accum_snap_bram_data_out
+ PORT bram_wr_data  = blast_0209_dds305_accum_snap_bram_data_in 
+ PORT bram_we       = blast_0209_dds305_accum_snap_bram_we      
+ BUS_INTERFACE PORTB = blast_0209_dds305_accum_snap_bram_ramblk_portb
+END
+
+BEGIN opb_bram_if_cntlr
+ PARAMETER INSTANCE = blast_0209_dds305_accum_snap_bram
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_OPB_CLK_PERIOD_PS = 10000
+ PARAMETER C_BASEADDR = 0x01002000
+ PARAMETER C_HIGHADDR = 0x01003FFF
+ BUS_INTERFACE SOPB = opb0
+ BUS_INTERFACE PORTA = blast_0209_dds305_accum_snap_bram_ramblk_portb
+END
+
+
+# blast_0209_dds305/accum_snap/ctrl
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_accum_snap_ctrl
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x01004000
+ PARAMETER C_HIGHADDR = 0x010040FF
+ BUS_INTERFACE SOPB = opb0
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_accum_snap_ctrl_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/accum_snap/status
+BEGIN opb_register_simulink2ppc
+ PARAMETER INSTANCE = blast_0209_dds305_accum_snap_status
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x01004100
+ PARAMETER C_HIGHADDR = 0x010041FF
+ BUS_INTERFACE SOPB = opb0
+ PORT OPB_Clk = epb_clk
+ PORT user_data_in = blast_0209_dds305_accum_snap_status_user_data_in
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/adc_mkid
+BEGIN adc_mkid_interface
+ PARAMETER INSTANCE = blast_0209_dds305_adc_mkid
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER OUTPUT_CLK = 1
+ PORT user_data_i0 = blast_0209_dds305_adc_mkid_user_data_i0
+ PORT user_data_i1 = blast_0209_dds305_adc_mkid_user_data_i1
+ PORT user_data_q0 = blast_0209_dds305_adc_mkid_user_data_q0
+ PORT user_data_q1 = blast_0209_dds305_adc_mkid_user_data_q1
+ PORT user_sync = blast_0209_dds305_adc_mkid_user_sync
+ PORT DRDY_I_p = adcmkid0_DRDY_I_p
+ PORT DRDY_I_n = adcmkid0_DRDY_I_n
+ PORT DRDY_Q_p = adcmkid0_DRDY_Q_p
+ PORT DRDY_Q_n = adcmkid0_DRDY_Q_n
+ PORT DI_p = adcmkid0_DI_p
+ PORT DI_n = adcmkid0_DI_n
+ PORT DQ_p = adcmkid0_DQ_p
+ PORT DQ_n = adcmkid0_DQ_n
+ PORT ADC_ext_in_p = adcmkid0_ADC_ext_in_p
+ PORT ADC_ext_in_n = adcmkid0_ADC_ext_in_n
+ PORT fpga_clk = adc1_clk
+ PORT adc_clk_out = adc0_clk
+ PORT adc_clk90_out = adc0_clk90
+ PORT adc_clk180_out = adc0_clk180
+ PORT adc_clk270_out = adc0_clk270
+ PORT adc_dcm_locked = adc0_dcm_locked
+END
+PORT adcmkid0_DRDY_I_p = adcmkid0_DRDY_I_p, DIR = in, SIGIS = CLK, CLK_FREQ = 256000000
+PORT adcmkid0_DRDY_I_n = adcmkid0_DRDY_I_n, DIR = in, SIGIS = CLK, CLK_FREQ = 256000000
+PORT adcmkid0_DRDY_Q_p = adcmkid0_DRDY_Q_p, DIR = in, SIGIS = CLK, CLK_FREQ = 256000000
+PORT adcmkid0_DRDY_Q_n = adcmkid0_DRDY_Q_n, DIR = in, SIGIS = CLK, CLK_FREQ = 256000000
+PORT adcmkid0_DI_p = adcmkid0_DI_p, DIR = in, VEC = [11:0]
+PORT adcmkid0_DI_n = adcmkid0_DI_n, DIR = in, VEC = [11:0]
+PORT adcmkid0_DQ_p = adcmkid0_DQ_p, DIR = in, VEC = [11:0]
+PORT adcmkid0_DQ_n = adcmkid0_DQ_n, DIR = in, VEC = [11:0]
+PORT adcmkid0_ADC_ext_in_p = adcmkid0_ADC_ext_in_p, DIR = in
+PORT adcmkid0_ADC_ext_in_n = adcmkid0_ADC_ext_in_n, DIR = in
+
+# blast_0209_dds305/adc_snap/bram
+BEGIN bram_block_custom
+ PARAMETER INSTANCE = blast_0209_dds305_adc_snap_bram_ramblk
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_PORTA_DWIDTH   = 64
+ PARAMETER C_PORTA_NUM_WE   = 8
+ PARAMETER C_PORTA_DEPTH    = 10
+ PARAMETER C_PORTB_DEPTH    = 11
+ PARAMETER OPTIMIZATION     = Minimum_Area
+ PARAMETER REG_CORE_OUTPUT  = true
+ PARAMETER REG_PRIM_OUTPUT  = true
+ PORT clk           = adc1_clk
+ PORT bram_addr     = blast_0209_dds305_adc_snap_bram_addr    
+ PORT bram_rd_data  = blast_0209_dds305_adc_snap_bram_data_out
+ PORT bram_wr_data  = blast_0209_dds305_adc_snap_bram_data_in 
+ PORT bram_we       = blast_0209_dds305_adc_snap_bram_we      
+ BUS_INTERFACE PORTB = blast_0209_dds305_adc_snap_bram_ramblk_portb
+END
+
+BEGIN opb_bram_if_cntlr
+ PARAMETER INSTANCE = blast_0209_dds305_adc_snap_bram
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_OPB_CLK_PERIOD_PS = 10000
+ PARAMETER C_BASEADDR = 0x01006000
+ PARAMETER C_HIGHADDR = 0x01007FFF
+ BUS_INTERFACE SOPB = opb0
+ BUS_INTERFACE PORTA = blast_0209_dds305_adc_snap_bram_ramblk_portb
+END
+
+
+# blast_0209_dds305/adc_snap/ctrl
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_adc_snap_ctrl
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x01008000
+ PARAMETER C_HIGHADDR = 0x010080FF
+ BUS_INTERFACE SOPB = opb0
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_adc_snap_ctrl_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/adc_snap/status
+BEGIN opb_register_simulink2ppc
+ PARAMETER INSTANCE = blast_0209_dds305_adc_snap_status
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x01008100
+ PARAMETER C_HIGHADDR = 0x010081FF
+ BUS_INTERFACE SOPB = opb0
+ PORT OPB_Clk = epb_clk
+ PORT user_data_in = blast_0209_dds305_adc_snap_status_user_data_in
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/adc_snap_trig
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_adc_snap_trig
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x01008200
+ PARAMETER C_HIGHADDR = 0x010082FF
+ BUS_INTERFACE SOPB = opb0
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_adc_snap_trig_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/bins
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_bins
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x01008300
+ PARAMETER C_HIGHADDR = 0x010083FF
+ BUS_INTERFACE SOPB = opb0
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_bins_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/chan_select
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_chan_select
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x01008400
+ PARAMETER C_HIGHADDR = 0x010084FF
+ BUS_INTERFACE SOPB = opb0
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_chan_select_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/dac_mkid1
+BEGIN dac_mkid_interface
+ PARAMETER INSTANCE = blast_0209_dds305_dac_mkid1
+ PARAMETER HW_VER = 1.01.a
+ PARAMETER OUTPUT_CLK = 0
+ PORT dac_data_i0 = blast_0209_dds305_dac_mkid1_dac_data_i0
+ PORT dac_data_i1 = blast_0209_dds305_dac_mkid1_dac_data_i1
+ PORT dac_data_q0 = blast_0209_dds305_dac_mkid1_dac_data_q0
+ PORT dac_data_q1 = blast_0209_dds305_dac_mkid1_dac_data_q1
+ PORT dac_sync_i = blast_0209_dds305_dac_mkid1_dac_sync_i
+ PORT dac_sync_q = blast_0209_dds305_dac_mkid1_dac_sync_q
+ PORT not_reset = blast_0209_dds305_dac_mkid1_not_reset
+ PORT dac_clk_p = dac0_clk_p
+ PORT dac_clk_n = dac0_clk_n
+ PORT dac_smpl_clk_i_p = dac0_smpl_clk_i_p
+ PORT dac_smpl_clk_i_n = dac0_smpl_clk_i_n
+ PORT dac_smpl_clk_q_p = dac0_smpl_clk_q_p
+ PORT dac_smpl_clk_q_n = dac0_smpl_clk_q_n
+ PORT dac_data_i_p = dac0_data_i_p
+ PORT dac_data_i_n = dac0_data_i_n
+ PORT dac_data_q_p = dac0_data_q_p
+ PORT dac_data_q_n = dac0_data_q_n
+ PORT dac_sync_i_p = dac0_sync_i_p
+ PORT dac_sync_i_n = dac0_sync_i_n
+ PORT dac_sync_q_p = dac0_sync_q_p
+ PORT dac_sync_q_n = dac0_sync_q_n
+ PORT dac_not_sdenb_i = dac0_not_sdenb_i
+ PORT dac_not_sdenb_q = dac0_not_sdenb_q
+ PORT dac_sclk = dac0_sclk
+ PORT dac_sdi = dac0_sdi
+ PORT dac_not_reset = dac0_not_reset
+ PORT dac_smpl_clk = adc1_clk
+END
+PORT dac0_clk_p = dac0_clk_p, DIR = in, SIGIS = CLK, CLK_FREQ = 256
+PORT dac0_clk_n = dac0_clk_n, DIR = in, SIGIS = CLK, CLK_FREQ = 256
+PORT dac0_smpl_clk_i_p = dac0_smpl_clk_i_p, DIR = out
+PORT dac0_smpl_clk_i_n = dac0_smpl_clk_i_n, DIR = out
+PORT dac0_smpl_clk_q_p = dac0_smpl_clk_q_p, DIR = out
+PORT dac0_smpl_clk_q_n = dac0_smpl_clk_q_n, DIR = out
+PORT dac0_data_i_p = dac0_data_i_p, DIR = out, VEC = [15:0]
+PORT dac0_data_i_n = dac0_data_i_n, DIR = out, VEC = [15:0]
+PORT dac0_data_q_p = dac0_data_q_p, DIR = out, VEC = [15:0]
+PORT dac0_data_q_n = dac0_data_q_n, DIR = out, VEC = [15:0]
+PORT dac0_sync_i_p = dac0_sync_i_p, DIR = out
+PORT dac0_sync_i_n = dac0_sync_i_n, DIR = out
+PORT dac0_sync_q_p = dac0_sync_q_p, DIR = out
+PORT dac0_sync_q_n = dac0_sync_q_n, DIR = out
+PORT dac0_not_sdenb_i = dac0_not_sdenb_i, DIR = out
+PORT dac0_not_sdenb_q = dac0_not_sdenb_q, DIR = out
+PORT dac0_sclk = dac0_sclk, DIR = out
+PORT dac0_sdi = dac0_sdi, DIR = out
+PORT dac0_not_reset = dac0_not_reset, DIR = out
+
+# blast_0209_dds305/dac_reset
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_dac_reset
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x01008500
+ PARAMETER C_HIGHADDR = 0x010085FF
+ BUS_INTERFACE SOPB = opb0
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_dac_reset_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/dds_shift
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_dds_shift
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x01008600
+ PARAMETER C_HIGHADDR = 0x010086FF
+ BUS_INTERFACE SOPB = opb0
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_dds_shift_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/fft_shift
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_fft_shift
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x01008700
+ PARAMETER C_HIGHADDR = 0x010087FF
+ BUS_INTERFACE SOPB = opb0
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_fft_shift_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/fft_snap/bram
+BEGIN bram_block_custom
+ PARAMETER INSTANCE = blast_0209_dds305_fft_snap_bram_ramblk
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_PORTA_DWIDTH   = 64
+ PARAMETER C_PORTA_NUM_WE   = 8
+ PARAMETER C_PORTA_DEPTH    = 9
+ PARAMETER C_PORTB_DEPTH    = 10
+ PARAMETER OPTIMIZATION     = Minimum_Area
+ PARAMETER REG_CORE_OUTPUT  = true
+ PARAMETER REG_PRIM_OUTPUT  = true
+ PORT clk           = adc1_clk
+ PORT bram_addr     = blast_0209_dds305_fft_snap_bram_addr    
+ PORT bram_rd_data  = blast_0209_dds305_fft_snap_bram_data_out
+ PORT bram_wr_data  = blast_0209_dds305_fft_snap_bram_data_in 
+ PORT bram_we       = blast_0209_dds305_fft_snap_bram_we      
+ BUS_INTERFACE PORTB = blast_0209_dds305_fft_snap_bram_ramblk_portb
+END
+
+BEGIN opb_bram_if_cntlr
+ PARAMETER INSTANCE = blast_0209_dds305_fft_snap_bram
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_OPB_CLK_PERIOD_PS = 10000
+ PARAMETER C_BASEADDR = 0x01009000
+ PARAMETER C_HIGHADDR = 0x01009FFF
+ BUS_INTERFACE SOPB = opb0
+ BUS_INTERFACE PORTA = blast_0209_dds305_fft_snap_bram_ramblk_portb
+END
+
+
+# blast_0209_dds305/fft_snap/ctrl
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_fft_snap_ctrl
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x0100A000
+ PARAMETER C_HIGHADDR = 0x0100A0FF
+ BUS_INTERFACE SOPB = opb0
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_fft_snap_ctrl_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/fft_snap/status
+BEGIN opb_register_simulink2ppc
+ PARAMETER INSTANCE = blast_0209_dds305_fft_snap_status
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x0100A100
+ PARAMETER C_HIGHADDR = 0x0100A1FF
+ BUS_INTERFACE SOPB = opb0
+ PORT OPB_Clk = epb_clk
+ PORT user_data_in = blast_0209_dds305_fft_snap_status_user_data_in
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/load_bins
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_load_bins
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x0100A200
+ PARAMETER C_HIGHADDR = 0x0100A2FF
+ BUS_INTERFACE SOPB = opb0
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_load_bins_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/mixerout/bram
+BEGIN bram_block_custom
+ PARAMETER INSTANCE = blast_0209_dds305_mixerout_bram_ramblk
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_PORTA_DWIDTH   = 64
+ PARAMETER C_PORTA_NUM_WE   = 8
+ PARAMETER C_PORTA_DEPTH    = 14
+ PARAMETER C_PORTB_DEPTH    = 15
+ PARAMETER OPTIMIZATION     = Minimum_Area
+ PARAMETER REG_CORE_OUTPUT  = true
+ PARAMETER REG_PRIM_OUTPUT  = true
+ PORT clk           = adc1_clk
+ PORT bram_addr     = blast_0209_dds305_mixerout_bram_addr    
+ PORT bram_rd_data  = blast_0209_dds305_mixerout_bram_data_out
+ PORT bram_wr_data  = blast_0209_dds305_mixerout_bram_data_in 
+ PORT bram_we       = blast_0209_dds305_mixerout_bram_we      
+ BUS_INTERFACE PORTB = blast_0209_dds305_mixerout_bram_ramblk_portb
+END
+
+BEGIN opb_bram_if_cntlr
+ PARAMETER INSTANCE = blast_0209_dds305_mixerout_bram
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_OPB_CLK_PERIOD_PS = 10000
+ PARAMETER C_BASEADDR = 0x01020000
+ PARAMETER C_HIGHADDR = 0x0103FFFF
+ BUS_INTERFACE SOPB = opb0
+ BUS_INTERFACE PORTA = blast_0209_dds305_mixerout_bram_ramblk_portb
+END
+
+
+# blast_0209_dds305/mixerout/ctrl
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_mixerout_ctrl
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x01040000
+ PARAMETER C_HIGHADDR = 0x010400FF
+ BUS_INTERFACE SOPB = opb0
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_mixerout_ctrl_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/mixerout/status
+BEGIN opb_register_simulink2ppc
+ PARAMETER INSTANCE = blast_0209_dds305_mixerout_status
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x01040100
+ PARAMETER C_HIGHADDR = 0x010401FF
+ BUS_INTERFACE SOPB = opb0
+ PORT OPB_Clk = epb_clk
+ PORT user_data_in = blast_0209_dds305_mixerout_status_user_data_in
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/one_GbE
+BEGIN gbe_udp
+ PARAMETER INSTANCE = blast_0209_dds305_one_GbE
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER LOCAL_ENABLE = 1
+ PARAMETER LOCAL_MAC = 0x24402020D17
+ PARAMETER LOCAL_IP = 0xC0A82847
+ PARAMETER LOCAL_PORT = 0xEA61
+ PARAMETER LOCAL_GATEWAY = 0x1
+ PARAMETER CPU_PROMISCUOUS = 1
+ PARAMETER DIS_CPU_TX = 0
+ PARAMETER DIS_CPU_RX = 0
+ PARAMETER C_BASEADDR = 0x01044000
+ PARAMETER C_HIGHADDR = 0x01047FFF
+ BUS_INTERFACE SOPB = opb0
+ PORT OPB_Clk = epb_clk
+ BUS_INTERFACE MAC = mac
+ PORT app_dbg_data = blast_0209_dds305_one_GbE_app_dbg_data
+ PORT app_dbg_dvld = blast_0209_dds305_one_GbE_app_dbg_dvld
+ PORT app_rx_badframe = blast_0209_dds305_one_GbE_app_rx_badframe
+ PORT app_rx_data = blast_0209_dds305_one_GbE_app_rx_data
+ PORT app_rx_dvld = blast_0209_dds305_one_GbE_app_rx_dvld
+ PORT app_rx_eof = blast_0209_dds305_one_GbE_app_rx_eof
+ PORT app_rx_overrun = blast_0209_dds305_one_GbE_app_rx_overrun
+ PORT app_rx_srcip = blast_0209_dds305_one_GbE_app_rx_srcip
+ PORT app_rx_srcport = blast_0209_dds305_one_GbE_app_rx_srcport
+ PORT app_tx_afull = blast_0209_dds305_one_GbE_app_tx_afull
+ PORT app_tx_overflow = blast_0209_dds305_one_GbE_app_tx_overflow
+ PORT app_rx_ack = blast_0209_dds305_one_GbE_app_rx_ack
+ PORT app_rx_rst = blast_0209_dds305_one_GbE_app_rx_rst
+ PORT app_tx_data = blast_0209_dds305_one_GbE_app_tx_data
+ PORT app_tx_destip = blast_0209_dds305_one_GbE_app_tx_destip
+ PORT app_tx_destport = blast_0209_dds305_one_GbE_app_tx_destport
+ PORT app_tx_dvld = blast_0209_dds305_one_GbE_app_tx_dvld
+ PORT app_tx_eof = blast_0209_dds305_one_GbE_app_tx_eof
+ PORT app_tx_rst = blast_0209_dds305_one_GbE_app_tx_rst
+ PORT app_clk = adc1_clk
+ PORT mac_tx_rst = blast_0209_dds305_one_GbE_app_tx_rst
+ PORT mac_rx_rst = blast_0209_dds305_one_GbE_app_rx_rst
+END
+
+
+# blast_0209_dds305/overflow
+BEGIN opb_register_simulink2ppc
+ PARAMETER INSTANCE = blast_0209_dds305_overflow
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x01048000
+ PARAMETER C_HIGHADDR = 0x010480FF
+ BUS_INTERFACE SOPB = opb0
+ PORT OPB_Clk = epb_clk
+ PORT user_data_in = blast_0209_dds305_overflow_user_data_in
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/pps
+BEGIN diffgpio_ext2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_pps
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER DDR = 0
+ PARAMETER WIDTH = 1
+ PARAMETER CLK_PHASE = 0
+ PARAMETER REG_IOB = true
+ PORT gateway = blast_0209_dds305_pps_gateway
+ PORT io_pad_p = blast_0209_dds305_pps_ext_p
+ PORT io_pad_n = blast_0209_dds305_pps_ext_n
+ PORT clk = adc1_clk
+ PORT clk90 = adc1_clk90
+END
+PORT blast_0209_dds305_pps_ext_p = blast_0209_dds305_pps_ext_p, DIR = in, VEC = [0:0]
+PORT blast_0209_dds305_pps_ext_n = blast_0209_dds305_pps_ext_n, DIR = in, VEC = [0:0]
+
+# blast_0209_dds305/pps_start
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_pps_start
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x01048100
+ PARAMETER C_HIGHADDR = 0x010481FF
+ BUS_INTERFACE SOPB = opb0
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_pps_start_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/rawfftbin/bram
+BEGIN bram_block_custom
+ PARAMETER INSTANCE = blast_0209_dds305_rawfftbin_bram_ramblk
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_PORTA_DWIDTH   = 128
+ PARAMETER C_PORTA_NUM_WE   = 16
+ PARAMETER C_PORTA_DEPTH    = 14
+ PARAMETER C_PORTB_DEPTH    = 16
+ PARAMETER OPTIMIZATION     = Minimum_Area
+ PARAMETER REG_CORE_OUTPUT  = true
+ PARAMETER REG_PRIM_OUTPUT  = true
+ PORT clk           = adc1_clk
+ PORT bram_addr     = blast_0209_dds305_rawfftbin_bram_addr    
+ PORT bram_rd_data  = blast_0209_dds305_rawfftbin_bram_data_out
+ PORT bram_wr_data  = blast_0209_dds305_rawfftbin_bram_data_in 
+ PORT bram_we       = blast_0209_dds305_rawfftbin_bram_we      
+ BUS_INTERFACE PORTB = blast_0209_dds305_rawfftbin_bram_ramblk_portb
+END
+
+BEGIN opb_bram_if_cntlr
+ PARAMETER INSTANCE = blast_0209_dds305_rawfftbin_bram
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_OPB_CLK_PERIOD_PS = 10000
+ PARAMETER C_BASEADDR = 0x01080000
+ PARAMETER C_HIGHADDR = 0x010BFFFF
+ BUS_INTERFACE SOPB = opb1
+ BUS_INTERFACE PORTA = blast_0209_dds305_rawfftbin_bram_ramblk_portb
+END
+
+
+# blast_0209_dds305/rawfftbin/ctrl
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_rawfftbin_ctrl
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x010C0000
+ PARAMETER C_HIGHADDR = 0x010C00FF
+ BUS_INTERFACE SOPB = opb1
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_rawfftbin_ctrl_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/rawfftbin/status
+BEGIN opb_register_simulink2ppc
+ PARAMETER INSTANCE = blast_0209_dds305_rawfftbin_status
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x010C0100
+ PARAMETER C_HIGHADDR = 0x010C01FF
+ BUS_INTERFACE SOPB = opb1
+ PORT OPB_Clk = epb_clk
+ PORT user_data_in = blast_0209_dds305_rawfftbin_status_user_data_in
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/rx_ack
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_rx_ack
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x010C0200
+ PARAMETER C_HIGHADDR = 0x010C02FF
+ BUS_INTERFACE SOPB = opb1
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_rx_ack_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/rx_rst
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_rx_rst
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x010C0300
+ PARAMETER C_HIGHADDR = 0x010C03FF
+ BUS_INTERFACE SOPB = opb1
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_rx_rst_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/start_dac
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_start_dac
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x010C0400
+ PARAMETER C_HIGHADDR = 0x010C04FF
+ BUS_INTERFACE SOPB = opb1
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_start_dac_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/sync/accum_len
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_sync_accum_len
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x010C0500
+ PARAMETER C_HIGHADDR = 0x010C05FF
+ BUS_INTERFACE SOPB = opb1
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_sync_accum_len_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/sync/accum_reset
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_sync_accum_reset
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x010C0600
+ PARAMETER C_HIGHADDR = 0x010C06FF
+ BUS_INTERFACE SOPB = opb1
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_sync_accum_reset_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/tx_destip
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_tx_destip
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x010C0700
+ PARAMETER C_HIGHADDR = 0x010C07FF
+ BUS_INTERFACE SOPB = opb1
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_tx_destip_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/tx_destport
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_tx_destport
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x010C0800
+ PARAMETER C_HIGHADDR = 0x010C08FF
+ BUS_INTERFACE SOPB = opb1
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_tx_destport_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# blast_0209_dds305/tx_rst
+BEGIN opb_register_ppc2simulink
+ PARAMETER INSTANCE = blast_0209_dds305_tx_rst
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x010C0900
+ PARAMETER C_HIGHADDR = 0x010C09FF
+ BUS_INTERFACE SOPB = opb1
+ PORT OPB_Clk = epb_clk
+ PORT user_data_out = blast_0209_dds305_tx_rst_user_data_out
+ PORT user_clk = adc1_clk
+END
+
+# OPB to OPB bridge added at 0x1080000
+BEGIN opb_v20
+ PARAMETER INSTANCE = opb1
+ PARAMETER HW_VER = 1.10.c
+ PARAMETER C_EXT_RESET_HIGH = 1
+ PORT SYS_Rst = sys_reset
+ PORT OPB_Clk = epb_clk
+END
+
+BEGIN opb_opb_lite
+ PARAMETER INSTANCE = opb2opb_bridge_opb1
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_NUM_DECODES  = 1
+ PARAMETER C_DEC0_BASEADDR = 0x01080000
+ PARAMETER C_DEC0_HIGHADDR = 0x010FFFFF
+ BUS_INTERFACE SOPB = opb0
+ BUS_INTERFACE MOPB = opb1
+ PORT MOPB_Clk = epb_clk
+ PORT SOPB_Clk = epb_clk
+END
+

@@ -1,0 +1,1 @@
+/opt/Xilinx/14.5/ISE_DS/ISE/sysgen/bin/lin64/saferun -a /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/sysgen/blast_0209_dds305_cw_import.log -- /opt/Xilinx/14.5/ISE_DS/ISE//bin/lin64/xtclsh ProjectGeneration.tcl

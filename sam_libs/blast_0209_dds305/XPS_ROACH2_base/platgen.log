@@ -1,0 +1,892 @@
+Release 14.5 - platgen Xilinx EDK 14.5 Build EDK_P.58f
+ (lin64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+Command Line: platgen -p xc6vsx475tff1759-1 -lang vhdl -intstyle default -msg
+__xps/ise/xmsgprops.lst system.mhs 
+
+WARNING:EDK - INFO:Security:50 - The XILINXD_LICENSE_FILE environment variable
+   is set to '2100@serverl189.sese.asu.edu'.
+   INFO:Security:52 - The LM_LICENSE_FILE environment variable is set to
+   '2100@serverl189.sese.asu.edu'.
+   INFO:Security:71 - If a license for part 'xc6vsx475t' is available, it will
+   be possible to use 'XPS_TDP' instead of 'XPS'.
+   WARNING:Security:43 - No license file was found in the standard Xilinx
+   license directory.
+   WARNING:Security:44 - Since no license file was found,
+          please run the Xilinx License Configuration Manager
+          (xlcm or "Manage Xilinx Licenses")
+          to assist in obtaining a license.
+   WARNING:Security:42 - Your software subscription period has lapsed. Your
+   current version of Xilinx tools will continue to function, but you no longer
+   qualify for Xilinx software updates or new releases.
+
+
+Parse
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system.mh
+s ...
+
+Read MPD definitions ...
+WARNING:EDK:4088 - IPNAME: opb_bram_if_cntlr, INSTANCE:
+   blast_0209_dds305_accum_snap_bram - Superseded core for architecture
+   'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 489 
+WARNING:EDK:4088 - IPNAME: opb_bram_if_cntlr, INSTANCE:
+   blast_0209_dds305_adc_snap_bram - Superseded core for architecture
+   'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 581 
+WARNING:EDK:4088 - IPNAME: opb_bram_if_cntlr, INSTANCE:
+   blast_0209_dds305_fft_snap_bram - Superseded core for architecture
+   'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 760 
+WARNING:EDK:4088 - IPNAME: opb_bram_if_cntlr, INSTANCE:
+   blast_0209_dds305_mixerout_bram - Superseded core for architecture
+   'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 826 
+WARNING:EDK:4088 - IPNAME: opb_bram_if_cntlr, INSTANCE:
+   blast_0209_dds305_rawfftbin_bram - Superseded core for architecture
+   'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 963 
+WARNING:EDK:4088 - IPNAME: opb_opb_lite, INSTANCE: opb2opb_bridge_opb1 -
+   Superseded core for architecture 'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 1103 
+WARNING:EDK:4088 - IPNAME: opb_bram_if_cntlr, INSTANCE:
+   blast_0209_dds305_accum_snap_bram - Superseded core for architecture
+   'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 489 
+WARNING:EDK:4088 - IPNAME: opb_bram_if_cntlr, INSTANCE:
+   blast_0209_dds305_adc_snap_bram - Superseded core for architecture
+   'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 581 
+WARNING:EDK:4088 - IPNAME: opb_bram_if_cntlr, INSTANCE:
+   blast_0209_dds305_fft_snap_bram - Superseded core for architecture
+   'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 760 
+WARNING:EDK:4088 - IPNAME: opb_bram_if_cntlr, INSTANCE:
+   blast_0209_dds305_mixerout_bram - Superseded core for architecture
+   'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 826 
+WARNING:EDK:4088 - IPNAME: opb_bram_if_cntlr, INSTANCE:
+   blast_0209_dds305_rawfftbin_bram - Superseded core for architecture
+   'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 963 
+WARNING:EDK:4088 - IPNAME: opb_opb_lite, INSTANCE: opb2opb_bridge_opb1 -
+   Superseded core for architecture 'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 1103 
+
+Overriding IP level properties ...
+
+Computing clock values...
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:sys_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:740 - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK:1039 - Did not update the value for parameter:
+   blast_0209_dds305_accum_snap_bram:c_opb_clk_period_ps. Top-level frequency
+   could not be propagated to this IP. Please make sure that you have specified
+   the frequency of the top-level clock port, and that the clocks are properly
+   connected.
+INFO:EDK:1039 - Did not update the value for parameter:
+   blast_0209_dds305_adc_snap_bram:c_opb_clk_period_ps. Top-level frequency
+   could not be propagated to this IP. Please make sure that you have specified
+   the frequency of the top-level clock port, and that the clocks are properly
+   connected.
+INFO:EDK:1039 - Did not update the value for parameter:
+   blast_0209_dds305_fft_snap_bram:c_opb_clk_period_ps. Top-level frequency
+   could not be propagated to this IP. Please make sure that you have specified
+   the frequency of the top-level clock port, and that the clocks are properly
+   connected.
+INFO:EDK:1039 - Did not update the value for parameter:
+   blast_0209_dds305_mixerout_bram:c_opb_clk_period_ps. Top-level frequency
+   could not be propagated to this IP. Please make sure that you have specified
+   the frequency of the top-level clock port, and that the clocks are properly
+   connected.
+INFO:EDK:1039 - Did not update the value for parameter:
+   blast_0209_dds305_rawfftbin_bram:c_opb_clk_period_ps. Top-level frequency
+   could not be propagated to this IP. Please make sure that you have specified
+   the frequency of the top-level clock port, and that the clocks are properly
+   connected.
+
+Performing IP level DRCs on properties...
+
+Running DRC Tcl procedures for OPTION IPLEVEL_DRC_PROC...
+INFO:EDK:4130 - IPNAME: opb_v20, INSTANCE:opb0 - tool is overriding PARAMETER
+   C_NUM_MASTERS value to 1 -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/pcores
+   /opb_v20_v1_10_c/data/opb_v20_v2_1_0.mpd line 74 
+INFO:EDK:4130 - IPNAME: opb_v20, INSTANCE:opb0 - tool is overriding PARAMETER
+   C_NUM_SLAVES value to 29 -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/pcores
+   /opb_v20_v1_10_c/data/opb_v20_v2_1_0.mpd line 75 
+INFO:EDK:4130 - IPNAME: opb_v20, INSTANCE:opb1 - tool is overriding PARAMETER
+   C_NUM_MASTERS value to 1 -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/pcores
+   /opb_v20_v1_10_c/data/opb_v20_v2_1_0.mpd line 74 
+INFO:EDK:4130 - IPNAME: opb_v20, INSTANCE:opb1 - tool is overriding PARAMETER
+   C_NUM_SLAVES value to 11 -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/pcores
+   /opb_v20_v1_10_c/data/opb_v20_v2_1_0.mpd line 75 
+
+Checking platform address map ...
+
+Checking platform configuration ...
+IPNAME: opb_v20, INSTANCE: opb0 - 1 master(s) : 29 slave(s) 
+IPNAME: opb_v20, INSTANCE: opb1 - 1 master(s) : 11 slave(s) 
+
+Checking port drivers...
+WARNING:EDK:4180 - PORT: fab_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 180 
+WARNING:EDK:4180 - PORT: clk, CONNECTOR: adc1_clk - No driver found. Port will
+   be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 192 
+WARNING:EDK:4180 - PORT: clk0, CONNECTOR: adc1_clk - No driver found. Port will
+   be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 310 
+WARNING:EDK:4180 - PORT: qdr_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 357 
+WARNING:EDK:4180 - PORT: clk0, CONNECTOR: adc1_clk - No driver found. Port will
+   be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 388 
+WARNING:EDK:4180 - PORT: qdr_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 435 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 467 
+WARNING:EDK:4180 - PORT: clk, CONNECTOR: adc1_clk - No driver found. Port will
+   be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 481 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 509 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 521 
+WARNING:EDK:4180 - PORT: fpga_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 544 
+WARNING:EDK:4180 - PORT: clk, CONNECTOR: adc1_clk - No driver found. Port will
+   be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 573 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 601 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 613 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 625 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 637 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 649 
+WARNING:EDK:4180 - PORT: dac_smpl_clk, CONNECTOR: adc1_clk - No driver found.
+   Port will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 683 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 714 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 726 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 738 
+WARNING:EDK:4180 - PORT: clk, CONNECTOR: adc1_clk - No driver found. Port will
+   be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 752 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 780 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 792 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 804 
+WARNING:EDK:4180 - PORT: clk, CONNECTOR: adc1_clk - No driver found. Port will
+   be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 818 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 846 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 858 
+WARNING:EDK:4180 - PORT: app_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 897 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 912 
+WARNING:EDK:4180 - PORT: clk, CONNECTOR: adc1_clk - No driver found. Port will
+   be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 926 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 941 
+WARNING:EDK:4180 - PORT: clk, CONNECTOR: adc1_clk - No driver found. Port will
+   be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 955 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 983 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 995 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 1007 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 1019 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 1031 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 1043 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 1055 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 1067 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 1079 
+WARNING:EDK:4180 - PORT: user_clk, CONNECTOR: adc1_clk - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 1091 
+WARNING:EDK:4180 - PORT: clk180, CONNECTOR: adc1_clk180 - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 311 
+WARNING:EDK:4180 - PORT: clk180, CONNECTOR: adc1_clk180 - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 389 
+WARNING:EDK:4180 - PORT: clk270, CONNECTOR: adc1_clk270 - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 312 
+WARNING:EDK:4180 - PORT: clk270, CONNECTOR: adc1_clk270 - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 390 
+WARNING:EDK:4180 - PORT: clk90, CONNECTOR: adc1_clk90 - No driver found. Port
+   will be driven to GND -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 927 
+WARNING:EDK:4181 - PORT: sys_clk90, CONNECTOR: sys_clk90 - floating connection -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 96 
+WARNING:EDK:4181 - PORT: sys_clk180, CONNECTOR: sys_clk180 - floating connection
+   -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 97 
+WARNING:EDK:4181 - PORT: sys_clk270, CONNECTOR: sys_clk270 - floating connection
+   -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 98 
+WARNING:EDK:4181 - PORT: sys_clk_lock, CONNECTOR: sys_clk_lock - floating
+   connection -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 99 
+WARNING:EDK:4181 - PORT: sys_clk2x90, CONNECTOR: sys_clk2x90 - floating
+   connection -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 101 
+WARNING:EDK:4181 - PORT: sys_clk2x180, CONNECTOR: sys_clk2x180 - floating
+   connection -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 102 
+WARNING:EDK:4181 - PORT: sys_clk2x270, CONNECTOR: sys_clk2x270 - floating
+   connection -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 103 
+WARNING:EDK:4181 - PORT: aux_clk, CONNECTOR: aux_clk - floating connection -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 104 
+WARNING:EDK:4181 - PORT: aux_clk90, CONNECTOR: aux_clk90 - floating connection -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 105 
+WARNING:EDK:4181 - PORT: aux_clk180, CONNECTOR: aux_clk180 - floating connection
+   -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 106 
+WARNING:EDK:4181 - PORT: aux_clk270, CONNECTOR: aux_clk270 - floating connection
+   -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 107 
+WARNING:EDK:4181 - PORT: aux_clk2x, CONNECTOR: aux_clk2x - floating connection -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 108 
+WARNING:EDK:4181 - PORT: aux_clk2x90, CONNECTOR: aux_clk2x90 - floating
+   connection -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 109 
+WARNING:EDK:4181 - PORT: aux_clk2x180, CONNECTOR: aux_clk2x180 - floating
+   connection -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 110 
+WARNING:EDK:4181 - PORT: aux_clk2x270, CONNECTOR: aux_clk2x270 - floating
+   connection -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 111 
+WARNING:EDK:4181 - PORT: clk_100, CONNECTOR: clk_100 - floating connection -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 116 
+WARNING:EDK:4181 - PORT: soft_reset, CONNECTOR: soft_reset - floating connection
+   -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 176 
+WARNING:EDK:4181 - PORT: adc_clk_out, CONNECTOR: adc0_clk - floating connection
+   -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 545 
+WARNING:EDK:4181 - PORT: adc_clk90_out, CONNECTOR: adc0_clk90 - floating
+   connection -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 546 
+WARNING:EDK:4181 - PORT: adc_clk180_out, CONNECTOR: adc0_clk180 - floating
+   connection -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 547 
+WARNING:EDK:4181 - PORT: adc_clk270_out, CONNECTOR: adc0_clk270 - floating
+   connection -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 548 
+WARNING:EDK:4181 - PORT: adc_dcm_locked, CONNECTOR: adc0_dcm_locked - floating
+   connection -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 549 
+
+Performing Clock DRCs...
+INFO:EDK:4060 - INSTANCE: blast_0209_dds305_accum_snap_bram, PARAMETER:
+   c_opb_clk_period_ps - Did not implement clock DRCs for the parameter.
+   Top-level frequency could not be propagated to this IP. Please make sure that
+   you have specified the frequency of the top-level clock port, and that the
+   clocks are properly connected.
+INFO:EDK:4060 - INSTANCE: blast_0209_dds305_adc_snap_bram, PARAMETER:
+   c_opb_clk_period_ps - Did not implement clock DRCs for the parameter.
+   Top-level frequency could not be propagated to this IP. Please make sure that
+   you have specified the frequency of the top-level clock port, and that the
+   clocks are properly connected.
+INFO:EDK:4060 - INSTANCE: blast_0209_dds305_fft_snap_bram, PARAMETER:
+   c_opb_clk_period_ps - Did not implement clock DRCs for the parameter.
+   Top-level frequency could not be propagated to this IP. Please make sure that
+   you have specified the frequency of the top-level clock port, and that the
+   clocks are properly connected.
+INFO:EDK:4060 - INSTANCE: blast_0209_dds305_mixerout_bram, PARAMETER:
+   c_opb_clk_period_ps - Did not implement clock DRCs for the parameter.
+   Top-level frequency could not be propagated to this IP. Please make sure that
+   you have specified the frequency of the top-level clock port, and that the
+   clocks are properly connected.
+INFO:EDK:4060 - INSTANCE: blast_0209_dds305_rawfftbin_bram, PARAMETER:
+   c_opb_clk_period_ps - Did not implement clock DRCs for the parameter.
+   Top-level frequency could not be propagated to this IP. Please make sure that
+   you have specified the frequency of the top-level clock port, and that the
+   clocks are properly connected.
+
+Performing Reset DRCs...
+
+Overriding system level properties...
+
+Running system level update procedures...
+
+Running UPDATE Tcl procedures for OPTION SYSLEVEL_UPDATE_PROC...
+
+Running system level DRCs...
+
+Performing System level DRCs on properties...
+
+Running DRC Tcl procedures for OPTION SYSLEVEL_DRC_PROC...
+
+Running UPDATE Tcl procedures for OPTION PLATGEN_SYSLEVEL_UPDATE_PROC...
+NETLIST CACHE HIT - Copying
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/../cache_
+dir/c29c7d1f6daca4abbf8c14991a0f59d8f9a997a3.ngc to
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/implement
+ation/blast_0209_dds305_accum_snap_bram_ramblk_wrapper/bram.ngc
+NETLIST CACHE HIT - Copying
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/../cache_
+dir/f9648430e075fbfda846bd792c027350ae82b6de.ngc to
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/implement
+ation/blast_0209_dds305_adc_snap_bram_ramblk_wrapper/bram.ngc
+NETLIST CACHE HIT - Copying
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/../cache_
+dir/26d63b125327d8a92774292ef0539e7e723cea84.ngc to
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/implement
+ation/blast_0209_dds305_fft_snap_bram_ramblk_wrapper/bram.ngc
+NETLIST CACHE HIT - Copying
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/../cache_
+dir/f622095603a2a0c9944e9483ed09e63556d6400d.ngc to
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/implement
+ation/blast_0209_dds305_mixerout_bram_ramblk_wrapper/bram.ngc
+NETLIST CACHE HIT - Copying
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/../cache_
+dir/788a637e9bcd6d21623d641a0646f0ca80b2a973.ngc to
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/implement
+ation/blast_0209_dds305_rawfftbin_bram_ramblk_wrapper/bram.ngc
+
+Modify defaults ...
+
+Creating stub ...
+
+Processing licensed instances ...
+Completion time: 0.00 seconds
+
+Creating hardware output directories ...
+
+Managing hardware (BBD-specified) netlist files ...
+IPNAME:blast_0209_dds305 INSTANCE:blast_0209_dds305_xsg_core_config -
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system.mh
+s line 189 - Copying (BBD-specified) netlist files.
+IPNAME:temac INSTANCE:temac_inst -
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system.mh
+s line 37 - Copying (BBD-specified) netlist files.
+IPNAME:qdr_controller INSTANCE:qdr0_controller -
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system.mh
+s line 303 - Copying (BBD-specified) netlist files.
+IPNAME:opb_qdr_sniffer INSTANCE:qdr0_sniffer -
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system.mh
+s line 343 - Copying (BBD-specified) netlist files.
+IPNAME:qdr_controller INSTANCE:qdr1_controller -
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system.mh
+s line 381 - Copying (BBD-specified) netlist files.
+IPNAME:opb_qdr_sniffer INSTANCE:qdr1_sniffer -
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system.mh
+s line 421 - Copying (BBD-specified) netlist files.
+IPNAME:bram_block_custom INSTANCE:blast_0209_dds305_accum_snap_bram_ramblk -
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system.mh
+s line 471 - Copying (BBD-specified) netlist files.
+IPNAME:adc_mkid_interface INSTANCE:blast_0209_dds305_adc_mkid -
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system.mh
+s line 525 - Copying (BBD-specified) netlist files.
+IPNAME:bram_block_custom INSTANCE:blast_0209_dds305_adc_snap_bram_ramblk -
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system.mh
+s line 563 - Copying (BBD-specified) netlist files.
+IPNAME:bram_block_custom INSTANCE:blast_0209_dds305_fft_snap_bram_ramblk -
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system.mh
+s line 742 - Copying (BBD-specified) netlist files.
+IPNAME:bram_block_custom INSTANCE:blast_0209_dds305_mixerout_bram_ramblk -
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system.mh
+s line 808 - Copying (BBD-specified) netlist files.
+IPNAME:gbe_udp INSTANCE:blast_0209_dds305_one_gbe -
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system.mh
+s line 862 - Copying (BBD-specified) netlist files.
+IPNAME:bram_block_custom INSTANCE:blast_0209_dds305_rawfftbin_bram_ramblk -
+/home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system.mh
+s line 945 - Copying (BBD-specified) netlist files.
+
+Managing cache ...
+
+Elaborating instances ...
+
+Writing HDL for elaborated instances ...
+
+Inserting wrapper level ...
+Completion time: 0.00 seconds
+
+Constructing platform-level connectivity ...
+ERROR:EDK:4072 - INSTANCE: sys_block_inst, PORT: fab_clk - port is driven by a
+   sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 164 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_XSG_core_config, PORT: clk - port
+   is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 189 
+ERROR:EDK:4072 - INSTANCE: qdr0_controller, PORT: clk0 - port is driven by a
+   sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 303 
+ERROR:EDK:4072 - INSTANCE: qdr0_controller, PORT: clk180 - port is driven by a
+   sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 303 
+ERROR:EDK:4072 - INSTANCE: qdr0_controller, PORT: clk270 - port is driven by a
+   sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 303 
+ERROR:EDK:4072 - INSTANCE: qdr0_sniffer, PORT: qdr_clk - port is driven by a
+   sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 343 
+ERROR:EDK:4072 - INSTANCE: qdr1_controller, PORT: clk0 - port is driven by a
+   sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 381 
+ERROR:EDK:4072 - INSTANCE: qdr1_controller, PORT: clk180 - port is driven by a
+   sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 381 
+ERROR:EDK:4072 - INSTANCE: qdr1_controller, PORT: clk270 - port is driven by a
+   sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 381 
+ERROR:EDK:4072 - INSTANCE: qdr1_sniffer, PORT: qdr_clk - port is driven by a
+   sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 421 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_QDR_LUT_we_qdr, PORT: user_clk -
+   port is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 459 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_accum_snap_bram_ramblk, PORT: clk -
+   port is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 471 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_accum_snap_ctrl, PORT: user_clk -
+   port is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 501 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_accum_snap_status, PORT: user_clk -
+   port is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 513 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_adc_mkid, PORT: fpga_clk - port is
+   driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 525 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_adc_snap_bram_ramblk, PORT: clk -
+   port is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 563 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_adc_snap_ctrl, PORT: user_clk -
+   port is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 593 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_adc_snap_status, PORT: user_clk -
+   port is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 605 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_adc_snap_trig, PORT: user_clk -
+   port is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 617 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_bins, PORT: user_clk - port is
+   driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 629 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_chan_select, PORT: user_clk - port
+   is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 641 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_dac_mkid1, PORT: dac_smpl_clk -
+   port is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 653 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_dac_reset, PORT: user_clk - port is
+   driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 706 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_dds_shift, PORT: user_clk - port is
+   driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 718 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_fft_shift, PORT: user_clk - port is
+   driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 730 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_fft_snap_bram_ramblk, PORT: clk -
+   port is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 742 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_fft_snap_ctrl, PORT: user_clk -
+   port is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 772 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_fft_snap_status, PORT: user_clk -
+   port is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 784 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_load_bins, PORT: user_clk - port is
+   driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 796 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_mixerout_bram_ramblk, PORT: clk -
+   port is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 808 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_mixerout_ctrl, PORT: user_clk -
+   port is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 838 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_mixerout_status, PORT: user_clk -
+   port is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 850 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_one_GbE, PORT: app_clk - port is
+   driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 862 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_overflow, PORT: user_clk - port is
+   driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 904 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_pps, PORT: clk - port is driven by
+   a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 916 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_pps, PORT: clk90 - port is driven
+   by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 916 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_pps_start, PORT: user_clk - port is
+   driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 933 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_rawfftbin_bram_ramblk, PORT: clk -
+   port is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 945 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_rawfftbin_ctrl, PORT: user_clk -
+   port is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 975 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_rawfftbin_status, PORT: user_clk -
+   port is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 987 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_rx_ack, PORT: user_clk - port is
+   driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 999 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_rx_rst, PORT: user_clk - port is
+   driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 1011 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_start_dac, PORT: user_clk - port is
+   driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 1023 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_sync_accum_len, PORT: user_clk -
+   port is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 1035 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_sync_accum_reset, PORT: user_clk -
+   port is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 1047 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_tx_destip, PORT: user_clk - port is
+   driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 1059 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_tx_destport, PORT: user_clk - port
+   is driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 1071 
+ERROR:EDK:4072 - INSTANCE: blast_0209_dds305_tx_rst, PORT: user_clk - port is
+   driven by a sourceless connector -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 1083 
+Completion time: 1.00 seconds
+ERROR:EDK:440 - platgen failed with errors!

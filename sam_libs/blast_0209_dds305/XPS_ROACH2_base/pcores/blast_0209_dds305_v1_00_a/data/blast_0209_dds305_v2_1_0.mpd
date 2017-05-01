@@ -1,0 +1,207 @@
+#############################################################################
+##
+## IP Name  : blast_0209_dds305
+## Desc     : Automatically generated IP core wrapping a
+##            Simulink Xilinx System Generator netlist.
+##            Please do not modify by hand, this file will be erased
+##
+#############################################################################
+
+BEGIN blast_0209_dds305
+
+###################
+# Generic Options #
+###################
+OPTION IPTYPE = IP
+OPTION STYLE  = BLACKBOX
+
+###################
+# Clock port      #
+###################
+PORT clk = "", DIR = I, SIGIS = CLK, CLK_FREQ = 256000000
+
+###################
+# Interfaces      #
+###################
+
+# blast_0209_dds305/XSG_core_config
+
+# blast_0209_dds305/QDR_LUT/qdr0
+PORT blast_0209_dds305_QDR_LUT_qdr0_ack = "", DIR = in
+PORT blast_0209_dds305_QDR_LUT_qdr0_cal_fail = "", DIR = in
+PORT blast_0209_dds305_QDR_LUT_qdr0_data_out = "", DIR = in, VEC = [71:0]
+PORT blast_0209_dds305_QDR_LUT_qdr0_data_valid = "", DIR = in
+PORT blast_0209_dds305_QDR_LUT_qdr0_phy_ready = "", DIR = in
+PORT blast_0209_dds305_QDR_LUT_qdr0_address = "", DIR = out, VEC = [31:0]
+PORT blast_0209_dds305_QDR_LUT_qdr0_be = "", DIR = out, VEC = [7:0]
+PORT blast_0209_dds305_QDR_LUT_qdr0_data_in = "", DIR = out, VEC = [71:0]
+PORT blast_0209_dds305_QDR_LUT_qdr0_rd_en = "", DIR = out
+PORT blast_0209_dds305_QDR_LUT_qdr0_wr_en = "", DIR = out
+
+# blast_0209_dds305/QDR_LUT/qdr1
+PORT blast_0209_dds305_QDR_LUT_qdr1_ack = "", DIR = in
+PORT blast_0209_dds305_QDR_LUT_qdr1_cal_fail = "", DIR = in
+PORT blast_0209_dds305_QDR_LUT_qdr1_data_out = "", DIR = in, VEC = [71:0]
+PORT blast_0209_dds305_QDR_LUT_qdr1_data_valid = "", DIR = in
+PORT blast_0209_dds305_QDR_LUT_qdr1_phy_ready = "", DIR = in
+PORT blast_0209_dds305_QDR_LUT_qdr1_address = "", DIR = out, VEC = [31:0]
+PORT blast_0209_dds305_QDR_LUT_qdr1_be = "", DIR = out, VEC = [7:0]
+PORT blast_0209_dds305_QDR_LUT_qdr1_data_in = "", DIR = out, VEC = [71:0]
+PORT blast_0209_dds305_QDR_LUT_qdr1_rd_en = "", DIR = out
+PORT blast_0209_dds305_QDR_LUT_qdr1_wr_en = "", DIR = out
+
+# blast_0209_dds305/QDR_LUT/we_qdr
+PORT blast_0209_dds305_QDR_LUT_we_qdr_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/accum_snap/bram
+PORT blast_0209_dds305_accum_snap_bram_data_out = "", DIR = in, VEC = [127:0]
+PORT blast_0209_dds305_accum_snap_bram_addr = "", DIR = out, VEC = [8:0]
+PORT blast_0209_dds305_accum_snap_bram_data_in = "", DIR = out, VEC = [127:0]
+PORT blast_0209_dds305_accum_snap_bram_we = "", DIR = out
+
+# blast_0209_dds305/accum_snap/ctrl
+PORT blast_0209_dds305_accum_snap_ctrl_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/accum_snap/status
+PORT blast_0209_dds305_accum_snap_status_user_data_in = "", DIR = out, VEC = [31:0]
+
+# blast_0209_dds305/adc_mkid
+PORT blast_0209_dds305_adc_mkid_user_data_i0 = "", DIR = in, VEC = [11:0]
+PORT blast_0209_dds305_adc_mkid_user_data_i1 = "", DIR = in, VEC = [11:0]
+PORT blast_0209_dds305_adc_mkid_user_data_q0 = "", DIR = in, VEC = [11:0]
+PORT blast_0209_dds305_adc_mkid_user_data_q1 = "", DIR = in, VEC = [11:0]
+PORT blast_0209_dds305_adc_mkid_user_sync = "", DIR = in
+
+# blast_0209_dds305/adc_snap/bram
+PORT blast_0209_dds305_adc_snap_bram_data_out = "", DIR = in, VEC = [63:0]
+PORT blast_0209_dds305_adc_snap_bram_addr = "", DIR = out, VEC = [9:0]
+PORT blast_0209_dds305_adc_snap_bram_data_in = "", DIR = out, VEC = [63:0]
+PORT blast_0209_dds305_adc_snap_bram_we = "", DIR = out
+
+# blast_0209_dds305/adc_snap/ctrl
+PORT blast_0209_dds305_adc_snap_ctrl_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/adc_snap/status
+PORT blast_0209_dds305_adc_snap_status_user_data_in = "", DIR = out, VEC = [31:0]
+
+# blast_0209_dds305/adc_snap_trig
+PORT blast_0209_dds305_adc_snap_trig_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/bins
+PORT blast_0209_dds305_bins_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/chan_select
+PORT blast_0209_dds305_chan_select_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/dac_mkid1
+PORT blast_0209_dds305_dac_mkid1_dac_data_i0 = "", DIR = out, VEC = [15:0]
+PORT blast_0209_dds305_dac_mkid1_dac_data_i1 = "", DIR = out, VEC = [15:0]
+PORT blast_0209_dds305_dac_mkid1_dac_data_q0 = "", DIR = out, VEC = [15:0]
+PORT blast_0209_dds305_dac_mkid1_dac_data_q1 = "", DIR = out, VEC = [15:0]
+PORT blast_0209_dds305_dac_mkid1_dac_sync_i = "", DIR = out
+PORT blast_0209_dds305_dac_mkid1_dac_sync_q = "", DIR = out
+PORT blast_0209_dds305_dac_mkid1_not_reset = "", DIR = out
+
+# blast_0209_dds305/dac_reset
+PORT blast_0209_dds305_dac_reset_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/dds_shift
+PORT blast_0209_dds305_dds_shift_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/fft_shift
+PORT blast_0209_dds305_fft_shift_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/fft_snap/bram
+PORT blast_0209_dds305_fft_snap_bram_data_out = "", DIR = in, VEC = [63:0]
+PORT blast_0209_dds305_fft_snap_bram_addr = "", DIR = out, VEC = [8:0]
+PORT blast_0209_dds305_fft_snap_bram_data_in = "", DIR = out, VEC = [63:0]
+PORT blast_0209_dds305_fft_snap_bram_we = "", DIR = out
+
+# blast_0209_dds305/fft_snap/ctrl
+PORT blast_0209_dds305_fft_snap_ctrl_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/fft_snap/status
+PORT blast_0209_dds305_fft_snap_status_user_data_in = "", DIR = out, VEC = [31:0]
+
+# blast_0209_dds305/load_bins
+PORT blast_0209_dds305_load_bins_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/mixerout/bram
+PORT blast_0209_dds305_mixerout_bram_data_out = "", DIR = in, VEC = [63:0]
+PORT blast_0209_dds305_mixerout_bram_addr = "", DIR = out, VEC = [13:0]
+PORT blast_0209_dds305_mixerout_bram_data_in = "", DIR = out, VEC = [63:0]
+PORT blast_0209_dds305_mixerout_bram_we = "", DIR = out
+
+# blast_0209_dds305/mixerout/ctrl
+PORT blast_0209_dds305_mixerout_ctrl_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/mixerout/status
+PORT blast_0209_dds305_mixerout_status_user_data_in = "", DIR = out, VEC = [31:0]
+
+# blast_0209_dds305/one_GbE
+PORT blast_0209_dds305_one_GbE_app_dbg_data = "", DIR = in, VEC = [31:0]
+PORT blast_0209_dds305_one_GbE_app_dbg_dvld = "", DIR = in
+PORT blast_0209_dds305_one_GbE_app_rx_badframe = "", DIR = in
+PORT blast_0209_dds305_one_GbE_app_rx_data = "", DIR = in, VEC = [7:0]
+PORT blast_0209_dds305_one_GbE_app_rx_dvld = "", DIR = in
+PORT blast_0209_dds305_one_GbE_app_rx_eof = "", DIR = in
+PORT blast_0209_dds305_one_GbE_app_rx_overrun = "", DIR = in
+PORT blast_0209_dds305_one_GbE_app_rx_srcip = "", DIR = in, VEC = [31:0]
+PORT blast_0209_dds305_one_GbE_app_rx_srcport = "", DIR = in, VEC = [15:0]
+PORT blast_0209_dds305_one_GbE_app_tx_afull = "", DIR = in
+PORT blast_0209_dds305_one_GbE_app_tx_overflow = "", DIR = in
+PORT blast_0209_dds305_one_GbE_app_rx_ack = "", DIR = out
+PORT blast_0209_dds305_one_GbE_app_rx_rst = "", DIR = out
+PORT blast_0209_dds305_one_GbE_app_tx_data = "", DIR = out, VEC = [7:0]
+PORT blast_0209_dds305_one_GbE_app_tx_destip = "", DIR = out, VEC = [31:0]
+PORT blast_0209_dds305_one_GbE_app_tx_destport = "", DIR = out, VEC = [15:0]
+PORT blast_0209_dds305_one_GbE_app_tx_dvld = "", DIR = out
+PORT blast_0209_dds305_one_GbE_app_tx_eof = "", DIR = out
+PORT blast_0209_dds305_one_GbE_app_tx_rst = "", DIR = out
+
+# blast_0209_dds305/overflow
+PORT blast_0209_dds305_overflow_user_data_in = "", DIR = out, VEC = [31:0]
+
+# blast_0209_dds305/pps
+PORT blast_0209_dds305_pps_gateway = "", DIR = in
+
+# blast_0209_dds305/pps_start
+PORT blast_0209_dds305_pps_start_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/rawfftbin/bram
+PORT blast_0209_dds305_rawfftbin_bram_data_out = "", DIR = in, VEC = [127:0]
+PORT blast_0209_dds305_rawfftbin_bram_addr = "", DIR = out, VEC = [13:0]
+PORT blast_0209_dds305_rawfftbin_bram_data_in = "", DIR = out, VEC = [127:0]
+PORT blast_0209_dds305_rawfftbin_bram_we = "", DIR = out
+
+# blast_0209_dds305/rawfftbin/ctrl
+PORT blast_0209_dds305_rawfftbin_ctrl_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/rawfftbin/status
+PORT blast_0209_dds305_rawfftbin_status_user_data_in = "", DIR = out, VEC = [31:0]
+
+# blast_0209_dds305/rx_ack
+PORT blast_0209_dds305_rx_ack_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/rx_rst
+PORT blast_0209_dds305_rx_rst_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/start_dac
+PORT blast_0209_dds305_start_dac_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/sync/accum_len
+PORT blast_0209_dds305_sync_accum_len_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/sync/accum_reset
+PORT blast_0209_dds305_sync_accum_reset_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/tx_destip
+PORT blast_0209_dds305_tx_destip_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/tx_destport
+PORT blast_0209_dds305_tx_destport_user_data_out = "", DIR = in, VEC = [31:0]
+
+# blast_0209_dds305/tx_rst
+PORT blast_0209_dds305_tx_rst_user_data_out = "", DIR = in, VEC = [31:0]
+
+END

@@ -1,0 +1,276 @@
+Saved contents of this file to system_log.14.4 during revup to EDK 14.5.
+
+=====================
+Opened log file
+=====================
+=====================
+Opened log file
+=====================
+Xilinx Platform Studio (XPS)
+Xilinx EDK 14.5 Build EDK_P.58f
+
+Xilinx EDK 14.5 Build EDK_P.58f
+
+WARNING:EDK - IPNAME: opb_bram_if_cntlr, INSTANCE:
+   blast_0209_dds305_accum_snap_bram - Superseded core for architecture
+   'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 489 
+WARNING:EDK - IPNAME: opb_bram_if_cntlr, INSTANCE:
+   blast_0209_dds305_adc_snap_bram - Superseded core for architecture
+   'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 581 
+WARNING:EDK - IPNAME: opb_bram_if_cntlr, INSTANCE:
+   blast_0209_dds305_fft_snap_bram - Superseded core for architecture
+   'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 760 
+WARNING:EDK - IPNAME: opb_bram_if_cntlr, INSTANCE:
+   blast_0209_dds305_mixerout_bram - Superseded core for architecture
+   'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 826 
+WARNING:EDK - IPNAME: opb_bram_if_cntlr, INSTANCE:
+   blast_0209_dds305_rawfftbin_bram - Superseded core for architecture
+   'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 963 
+WARNING:EDK - IPNAME: opb_opb_lite, INSTANCE: opb2opb_bridge_opb1 - Superseded
+   core for architecture 'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 1103 
+WARNING:EDK - IPNAME: opb_bram_if_cntlr, INSTANCE:
+   blast_0209_dds305_accum_snap_bram - Superseded core for architecture
+   'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 489 
+WARNING:EDK - IPNAME: opb_bram_if_cntlr, INSTANCE:
+   blast_0209_dds305_adc_snap_bram - Superseded core for architecture
+   'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 581 
+WARNING:EDK - IPNAME: opb_bram_if_cntlr, INSTANCE:
+   blast_0209_dds305_fft_snap_bram - Superseded core for architecture
+   'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 760 
+WARNING:EDK - IPNAME: opb_bram_if_cntlr, INSTANCE:
+   blast_0209_dds305_mixerout_bram - Superseded core for architecture
+   'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 826 
+WARNING:EDK - IPNAME: opb_bram_if_cntlr, INSTANCE:
+   blast_0209_dds305_rawfftbin_bram - Superseded core for architecture
+   'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 963 
+WARNING:EDK - IPNAME: opb_opb_lite, INSTANCE: opb2opb_bridge_opb1 - Superseded
+   core for architecture 'virtex6sx' -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/system
+   .mhs line 1103 
+
+Overriding IP level properties ...
+
+Computing clock values...
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:sys_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Cannot determine the input clock associated with port :
+   infrastructure_inst:epb_clk. Clock DRCs will not be performed on this core
+   and cores connected to it. 
+INFO:EDK - Did not update the value for parameter:
+   blast_0209_dds305_accum_snap_bram:c_opb_clk_period_ps. Top-level frequency
+   could not be propagated to this IP. Please make sure that you have specified
+   the frequency of the top-level clock port, and that the clocks are properly
+   connected.
+INFO:EDK - Did not update the value for parameter:
+   blast_0209_dds305_adc_snap_bram:c_opb_clk_period_ps. Top-level frequency
+   could not be propagated to this IP. Please make sure that you have specified
+   the frequency of the top-level clock port, and that the clocks are properly
+   connected.
+INFO:EDK - Did not update the value for parameter:
+   blast_0209_dds305_fft_snap_bram:c_opb_clk_period_ps. Top-level frequency
+   could not be propagated to this IP. Please make sure that you have specified
+   the frequency of the top-level clock port, and that the clocks are properly
+   connected.
+INFO:EDK - Did not update the value for parameter:
+   blast_0209_dds305_mixerout_bram:c_opb_clk_period_ps. Top-level frequency
+   could not be propagated to this IP. Please make sure that you have specified
+   the frequency of the top-level clock port, and that the clocks are properly
+   connected.
+INFO:EDK - Did not update the value for parameter:
+   blast_0209_dds305_rawfftbin_bram:c_opb_clk_period_ps. Top-level frequency
+   could not be propagated to this IP. Please make sure that you have specified
+   the frequency of the top-level clock port, and that the clocks are properly
+   connected.
+
+Performing IP level DRCs on properties...
+
+Running DRC Tcl procedures for OPTION IPLEVEL_DRC_PROC...
+INFO:EDK - IPNAME: opb_v20, INSTANCE:opb0 - tool is overriding PARAMETER
+   C_NUM_MASTERS value to 1 -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/pcores
+   /opb_v20_v1_10_c/data/opb_v20_v2_1_0.mpd line 74 
+INFO:EDK - IPNAME: opb_v20, INSTANCE:opb0 - tool is overriding PARAMETER
+   C_NUM_SLAVES value to 29 -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/pcores
+   /opb_v20_v1_10_c/data/opb_v20_v2_1_0.mpd line 75 
+INFO:EDK - IPNAME: opb_v20, INSTANCE:opb1 - tool is overriding PARAMETER
+   C_NUM_MASTERS value to 1 -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/pcores
+   /opb_v20_v1_10_c/data/opb_v20_v2_1_0.mpd line 74 
+INFO:EDK - IPNAME: opb_v20, INSTANCE:opb1 - tool is overriding PARAMETER
+   C_NUM_SLAVES value to 11 -
+   /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/pcores
+   /opb_v20_v1_10_c/data/opb_v20_v2_1_0.mpd line 75 
+
+Checking platform address map ...
+
+XPS% Evaluating file run_xps.tcl
+ERROR:EDK -  
+   Error while running "gmake -f system.make bits".

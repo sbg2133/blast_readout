@@ -1,0 +1,9 @@
+#!/bin/bash
+cp implementation/system.bit ../bit_files/blast_0209_dds305_2017_Mar_10_1128.bit
+./mkbof_64 -o implementation/system.bof -s core_info.tab -t 3 implementation/system.bin
+cp implementation/system.bof ../bit_files/blast_0209_dds305_2017_Mar_10_1128.bof
+cp design_info.tab ../bit_files/blast_0209_dds305_2017_Mar_10_1128.info
+gzip -c ../bit_files/blast_0209_dds305_2017_Mar_10_1128.bof  > ../bit_files/blast_0209_dds305_2017_Mar_10_1128.bof.gz
+gzip -c implementation/system.bin > implementation/system.bin.gz
+cat implementation/system.bin.gz >> /home/muchacho/workspace/skasa/matt3/blast_0209_dds305/XPS_ROACH2_base/extended_info.kcpfpg
+cp extended_info.kcpfpg ../bit_files/blast_0209_dds305_2017_Mar_10_1128.fpg

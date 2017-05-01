@@ -1,0 +1,1 @@
+/opt/Xilinx/14.5/ISE_DS/ISE/sysgen/bin/lin64/saferun -- /opt/Xilinx/14.5/ISE_DS/ISE//bin/lin64/ngcbuild -p xc6vsx475t-1ff1759 blast_0209_dds305_cw blast_0209_dds305_cw_complete.ngc
